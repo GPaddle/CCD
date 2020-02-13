@@ -11,8 +11,9 @@ class ListUserControler
 {
 
   public function getAllUser(){
-    $v = User::select('id', 'nom')->get();
-    return $v->toArray();
+    $res = User::select('id', 'nom')->get();
+    $v = new VueChoixCompteTest($res);
+    $v->render();
   }
 
 }
