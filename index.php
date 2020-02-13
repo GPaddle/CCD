@@ -55,7 +55,6 @@ $app->get("/inscription",function (){
     $c=new connectionControler();
     $c->inscrire();
 });
-
 $app->get("/ajouterCreneau", function () {
     $a = new CreneauControleur();
     $a->afficher();
