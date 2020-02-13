@@ -80,7 +80,5 @@ ALTER TABLE user
 DROP TABLE IF EXISTS `InscriptionBesoin`;
 create table InscriptionBesoin(
     idUser int,
-    idBesoin int,
-    FOREIGN KEY (idUser) REFERENCES user(id),
-    FOREIGN KEY (idBesoin) REFERENCES besoin(id)
+    idBesoin int
     );
