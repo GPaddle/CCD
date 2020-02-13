@@ -53,9 +53,17 @@ $app->get('/', function () {
     $vGenerale = new VueGenerale();
     $app = \Slim\Slim::getInstance();
     $urlModif = $app->urlFor('connexion');
-    $vGenerale->render("<a href={$urlModif}>Connexion à la page</a>");
+    $urlModif2 = $app->urlFor('inscrire');
+    $vGenerale->render("<a href={$urlModif}>Connexion à la page</a>   <a href={$urlModif2}>S'inscrire à la page</a>");
 })->name('route_home');
-
+$app->get("/inscrire",function (){
+    $c =new connectionControler();
+    $c->renderInscription();
+})->name("inscrire");
+$app->get("/inscription",function (){
+    $c=new connectionControler();
+    $c->inscrire();
+});
 $app->get("/ajouterCreneau", function() {
 	$a = new CreneauControleur();
 	$a->afficher();
@@ -88,5 +96,8 @@ $app->get("/listeBesoin",function(){
     $controler=new ListBesoinControleur();
     $controler->render();
 });
+$app->post("/seCo",function (){
 
+}
+);
 $app->run();
