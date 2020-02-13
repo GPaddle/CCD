@@ -24,24 +24,22 @@ CREATE TABLE user (
   isAdmin boolean DEFAULT false
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO user (id, nom) VALUES
-(1, 'Cassandre'),
-(2, 'Achille'),
-(3, 'Calypso'),
-(4, 'Bacchus'),
-(5, 'Diane'),
-(6, 'Clark'),
-(7, 'Helene'),
-(8, 'Jason'),
-(9, 'Bruce'),
-(10, 'Pénélope');
+INSERT INTO user (id, nom,mdp,mail) VALUES
+(1, 'Cassandre','$2y$10$gXwubIZFuTb.YLgKNsgEl.EnJYYWHqW4hyCnlUWjv6UvpvKYjsGaa','vide'),
+(2, 'Achille','$2y$10$gXwubIZFuTb.YLgKNsgEl.EnJYYWHqW4hyCnlUWjv6UvpvKYjsGaa','vide'),
+(3, 'Calypso','$2y$10$gXwubIZFuTb.YLgKNsgEl.EnJYYWHqW4hyCnlUWjv6UvpvKYjsGaa','vide'),
+(4, 'Bacchus','$2y$10$gXwubIZFuTb.YLgKNsgEl.EnJYYWHqW4hyCnlUWjv6UvpvKYjsGaa','vide'),
+(5, 'Diane','$2y$10$gXwubIZFuTb.YLgKNsgEl.EnJYYWHqW4hyCnlUWjv6UvpvKYjsGaa','vide'),
+(6, 'Clark','$2y$10$gXwubIZFuTb.YLgKNsgEl.EnJYYWHqW4hyCnlUWjv6UvpvKYjsGaa','vide'),
+(7, 'Helene','$2y$10$gXwubIZFuTb.YLgKNsgEl.EnJYYWHqW4hyCnlUWjv6UvpvKYjsGaa','vide'),
+(8, 'Jason','$2y$10$gXwubIZFuTb.YLgKNsgEl.EnJYYWHqW4hyCnlUWjv6UvpvKYjsGaa','vide'),
+(9, 'Bruce','$2y$10$gXwubIZFuTb.YLgKNsgEl.EnJYYWHqW4hyCnlUWjv6UvpvKYjsGaa','vide'),
+(10, 'Pénélope','$2y$10$gXwubIZFuTb.YLgKNsgEl.EnJYYWHqW4hyCnlUWjv6UvpvKYjsGaa','vide');
 
 
-INSERT INTO user (id, nom,isAdmin) VALUES
-(11, 'Ariane',true),
-(12, 'Lois',true);
-
-
+INSERT INTO user (id, nom,mdp,mail,isAdmin) VALUES
+(11, 'Ariane','$2y$10$gXwubIZFuTb.YLgKNsgEl.EnJYYWHqW4hyCnlUWjv6UvpvKYjsGaa','vide',true),
+(12, 'Lois','$2y$10$gXwubIZFuTb.YLgKNsgEl.EnJYYWHqW4hyCnlUWjv6UvpvKYjsGaa','vide',true);
 
 
 DROP TABLE IF EXISTS `creneau`;

@@ -31,7 +31,7 @@ class connectionControler
         $id=$app->request()->params('id');
         $mdp=$app->request()->params('mdp');
         $retour=Authentification::authenticate($id,$mdp);
-        if ($retour==1&&$retour==2) {
+        if ($retour) {
             $app->redirectTo("route_home");
         }else{
             $app->redirectTo("connexion");
@@ -43,8 +43,12 @@ class connectionControler
         $mdp=$app->request()->params('mdp');
         $mdp2=$app->request()->params('mdp2');
         $mail=$app->request()->params('mail');
-        Authentification::createUser($nom,$mdp,$mdp2,$mail);
-        $app->redirectTo("route_home");
+        $retour=Authentification::createUser($nom,$mdp,$mdp2,$mail);
+        if ($retour==1&&$retour==2) {
+            $app->redirectTo("route_home");
+        }else{
+            $app->redirectTo("inscrire");
+        }
     }
     public function renderInscription(){
         $v=new VueInscription();

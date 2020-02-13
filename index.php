@@ -26,26 +26,36 @@ session_start();
 
 //Affichage de toutes les listes
 
-$app->get('/loginTest/:id', function ($id) {
+$app->get('/', function () {
+    $controller = new HomeControler();
+    $controller->render();
+})->name('route_home');
+
+$app->get('/users', function () {
+    $c = new ListUserControler();
+    $c->getAllUser();
+})->name('route_listeUser');
+
+$app->get('/users/:id', function ($id) {
     $c = new connectionControler();
     $c->getUser($id);
 })->name('route_loginTestId');
+
+$app->get("/connexion", function () {
+    $controler = new connectionControler();
+    $controler->seConnecter();
+})->name('connexion');
+
+$app->post("/connexion", function () {
+    $controler = new connectionControler();
+    $controler->authentifier();
+});
 
 $app->get('/deconnexion', function () use ($app){
     $c = new connectionControler();
     $c->deconnexion();
     $app->response->redirect($app->urlFor('route_home'),303);
 })->name('route_deconnexion');
-
-$app->get('/listeUser', function () {
-    $c = new ListUserControler();
-    $c->getAllUser();
-})->name('route_listeUser');
-
-$app->get('/', function () {
-    $controller = new HomeControler();
-    $controller->render();
-})->name('route_home');
 
 $app->get("/inscrire",function (){
     $c =new connectionControler();
@@ -77,16 +87,6 @@ $app->post("/ajouterBesoin/:idCreneau", function ($idCreneau) {
     $controler->ajouterBesoin($idCreneau);
 })->name('route_ajoutBesoinIdCreneau');
 
-$app->get("/connexion", function () {
-    $controler = new connectionControler();
-    $controler->seConnecter();
-})->name('connexion');
-
-$app->post("/connexion", function () {
-    $controler = new connectionControler();
-    $controler->authentifier();
-});
-
 $app->get("/listeBesoin",function(){
     $controler=new ListBesoinControleur();
     $controler->render();
@@ -94,14 +94,9 @@ $app->get("/listeBesoin",function(){
 $app->post("/seCo",function (){
 });
 
-$app->get("/inscriptionBesoin/:idCreneau", function($idCreneau) {
+$app->get("/inscriptionBesoin/:idBesoin", function($idBesoin) {
   $controler = new InscriptionBesoinControler();
-  $controler->renderForm($idCreneau);
-});
-
-$app->post("/inscriptionBesoin", function() {
-  $controler = new InscriptionBesoinControler();
-  $controler->ajouterBesoinInscription();
+  $controler->ajouterBesoinInscription($idBesoin);
 });
 
 $app->post("/supUser",function (){
