@@ -1,7 +1,8 @@
 <?php
 	namespace GEG\controler;
 
-	use GEG\view\VueFormulaireBesoin;
+	use GEG\model\Besoin;
+    use GEG\view\VueFormulaireBesoin;
 use GEG\model\Role;
 	class AjouterBesoinControler {
 		public function renderForm($idCreneau) {
@@ -20,5 +21,9 @@ use GEG\model\Role;
 
 			$besoin->save();
 		}
+		public function supprimerBesoin($idCreneau){
+            $besoin = Besoin::find($idCreneau);
+            $besoin->delete();
+        }
 	}
 ?>
