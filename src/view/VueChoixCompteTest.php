@@ -36,8 +36,6 @@ class VueChoixCompteTest
             }
             $it++;
         }
-        return $tab; // Au cas où le tableau reçu serait incompatible à la vue faite
-    }
 
     /**
      * Converti les valeurs en ligne html
@@ -81,4 +79,9 @@ END;
         }
         return $res;
     }
+
+    public function render(){
+      return "";
+    }
+
 }

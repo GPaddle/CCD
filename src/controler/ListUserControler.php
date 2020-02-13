@@ -4,16 +4,16 @@ namespace GEG\controler;
 
 
 use \Illuminate\Database\Capsule\Manager as DB;
-use GEG\model\Liste;
-use GEG\model\Item;
+use GEG\model\User;
 use GEG\view\VueHome;
 
 class ListUserControler
 {
 
   public function getAllUser(){
-    $v = User::select('id', 'nom')->all();
-    return $v->toArray();
+    $res = User::select('id', 'nom')->get();
+    $v = new VueChoixCompteTest($res);
+    $v->render();
   }
 
 }

@@ -13,7 +13,7 @@ class connectionControler
     {
         $user = User::where('id','=',$id)->first();
 
-        $v = new VueUtilisateur($id);
+        $v = new VueUtilisateur($user);
         $v->render();
     }
 }
