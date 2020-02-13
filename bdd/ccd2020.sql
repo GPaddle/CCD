@@ -21,7 +21,7 @@ CREATE TABLE user (
   nom varchar(30) CHARACTER SET utf8 NOT NULL,
   mdp varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   mail varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  isAdmin boolean
+  isAdmin boolean DEFAULT false
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO user (id, nom) VALUES
@@ -34,9 +34,14 @@ INSERT INTO user (id, nom) VALUES
 (7, 'Helene'),
 (8, 'Jason'),
 (9, 'Bruce'),
-(10, 'Pénélope'),
-(11, 'Ariane'),
-(12, 'Lois');
+(10, 'Pénélope');
+
+
+INSERT INTO user (id, nom,isAdmin) VALUES
+(11, 'Ariane',true),
+(12, 'Lois',true);
+
+
 
 
 DROP TABLE IF EXISTS `creneau`;
@@ -76,6 +81,7 @@ ALTER TABLE role
 ALTER TABLE user
   MODIFY id int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
+DROP TABLE IF EXISTS `InscriptionBesoin`;
 create table InscriptionBesoin(
     idUser int,
     idBesoin int,
