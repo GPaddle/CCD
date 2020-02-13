@@ -46,11 +46,11 @@ class connectionControler
         $mdp2=$app->request()->params('mdp2');
         $mail=$app->request()->params('mail');
         $retour=Authentification::createUser($nom,$mdp,$mdp2,$mail);
-        if ($retour==1||$retour==2) {
-            $app->redirectTo("route_home");
-        }else{
+        if ($retour===1||$retour===2) {
             setcookie('err2',serialize("Echec de l'inscription"),time()+10,"./");
             $app->redirectTo("inscrire");
+        }else{
+            $app->redirectTo("route_home");
         }
     }
     public function renderInscription(){
