@@ -31,7 +31,7 @@ class connectionControler
         $id=$app->request()->params('id');
         $mdp=$app->request()->params('mdp');
         $retour=Authentification::authenticate($id,$mdp);
-        if ($retour==1) {
+        if ($retour==1&&$retour==2) {
             $app->redirectTo("route_home");
         }else{
             $app->redirectTo("connexion");
