@@ -95,5 +95,5 @@ $app->post("/seCo",function (){
 $app->post("/supUser",function (){
     $c=new connectionControler();
     $c->supprimer($_SESSION['id']);
-});
+})->name("supCompte");
 $app->run();
