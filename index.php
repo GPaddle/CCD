@@ -5,8 +5,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 use Illuminate\Database\Capsule\Manager as DB;
 use GEG\controler\connectionControler;
 use GEG\controler\notFoundControler;
-
-
+use GEG\controler\ListUserControler;
 $db = new DB();
 $db->addConnection(parse_ini_file("src/conf/conf.ini"));
 
@@ -27,6 +26,11 @@ $app->get('/loginTest/:id', function ($id) {
     $c = new connectionControler();
     $c->getUser($id);
 })->name('route_loginTest');
+
+$app->get('/listeUser', function () {
+    $c = new ListUserControler();
+    $c->getAllUser();
+})->name('route_listeUser');
 
 $app->get('/', function () {
     echo "HOME";
