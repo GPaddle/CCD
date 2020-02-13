@@ -32,8 +32,8 @@ class connectionControler
         $mdp=$app->request()->params('mdp');
         Authentification::authenticate($id,$mdp);
     }
-    public function inscrire(){
-        $app=$app = \Slim\Slim::getInstance();
+    public function inscrire() {
+        $app = \Slim\Slim::getInstance();
         $nom=$app->request()->params('nom');
         $mdp=$app->request()->params('mdp');
         $mdp2=$app->request()->params('mdp2');
