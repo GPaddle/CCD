@@ -56,9 +56,11 @@ insert into creneau (jour, semaine, cycle, debutHeure, finHeure) VALUES
 
 DROP TABLE IF EXISTS `besoin`;
 CREATE TABLE besoin(
+  id int AUTO_INCREMENT,
 	idCreneau int,
 	idRole int,
-	qte int
+	qte int,
+  PRIMARY KEY (id)
 );
 
 ALTER TABLE role
