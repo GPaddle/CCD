@@ -31,7 +31,7 @@ class VueChoixCompteTest
     {
         $res = array();
         foreach ($tab as $ligne) {
-            $res[] = array($ligne->id, $ligne->nom);
+            $res[] = array($ligne->nom);
         }
         return $res;
     }
@@ -63,8 +63,8 @@ END;
     {
 
         return <<<END
-<div id="ligne"><div>Id</div><div>Nom</div></div>
-END;;
+<div id="ligne"><div>Nom</div></div>
+END;
     }
     /**
      * Transforme les valeurs en lien
