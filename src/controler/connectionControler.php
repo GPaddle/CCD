@@ -55,5 +55,13 @@ class connectionControler
         if(isset($_SESSION['user'])){
             session_destroy();
         }
+        $app = \Slim\Slim::getInstance();
+        $app->redirectTo("route_home");
+    }
+    public function supprimer($idcompte){
+        User::find($idcompte)->delete();
+        $app = \Slim\Slim::getInstance();
+        $app->redirectTo("route_home");
+
     }
 }

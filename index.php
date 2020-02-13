@@ -83,7 +83,7 @@ $app->get("/connexion", function () {
 $app->post("/connexion", function () {
     $controler = new connectionControler();
     $controler->authentifier();
-})->name('connexion2');
+});
 
 $app->get("/listeBesoin",function(){
     $controler=new ListBesoinControleur();
@@ -91,5 +91,8 @@ $app->get("/listeBesoin",function(){
 })->name('route_listeBesoin');
 $app->post("/seCo",function (){
 });
-
+$app->post("/supUser",function (){
+    $c=new connectionControler();
+    $c->supprimer($_SESSION['id']);
+});
 $app->run();
