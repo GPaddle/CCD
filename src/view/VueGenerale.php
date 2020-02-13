@@ -186,7 +186,7 @@ END;
 		</div>
 		
 		<script>
-		let txt="Copyright &copy; Your Website "
+		let txt="Copyright &copy; Blop@IUTNC2019-2020 : "
 		txt+=new Date(Date.now()).getYear()+1900;
 
 		document.querySelector("#date").innerHTML=txt;

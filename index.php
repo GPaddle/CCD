@@ -96,12 +96,12 @@ $app->post("/seCo",function (){
 $app->get("/inscriptionBesoin", function() {
   $controler = new InscriptionBesoinControleur();
   $controler->renderForm($idCreneau);
-})
+});
 
 $app->post("/inscriptionBesoin", function() {
   $controler = new InscriptionBesoinControleur();
   $controler->renderForm($idCreneau);
-})
+});
 
 $app->post("/supUser",function (){
     $c=new connectionControler();
