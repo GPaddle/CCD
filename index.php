@@ -54,7 +54,7 @@ $app->get('/', function () {
 
 $app->get("/FormulaireAjouterCreneau", function() {
 	$a = new VueAjouterCreneau();
-	$a->afficher();
+	$a->render();
 });
 
 $app->run();

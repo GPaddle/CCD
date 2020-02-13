@@ -13,13 +13,12 @@ class VueUtilisateur
 		$id = $_SESSION['user']['id'];
 
 		$html = <<<END
-			$nom
+			Nom de l'utilisateur : $nom
 			<br>
-			$id
+			Id de la session en cours : $id
 END;
 
 		$vGenerale = new VueGenerale();
-
 		$vGenerale->render($html);
 	}
 }
