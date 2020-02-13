@@ -10,19 +10,20 @@ use GEG\model\Role;
  */
 class VueFormulaireBesoin
 {
+    private $role;
     /**
      * VueFormulaireBesoin constructor.
      */
-    public function __construct()
+    public function __construct($role)
     {
-
+        $this->role=$role;
     }
 
     /**
      * @return array Liste de besoin
      */
     private function getBesoin(){
-        $v=Role::select("id","label")->get();
+        $v=$this->role;
         $res=array();
         foreach ($v as $key => $val){
             $res[]=$val->label;
