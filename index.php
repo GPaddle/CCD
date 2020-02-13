@@ -10,7 +10,7 @@ use GEG\controler\ListUserControler;
 use GEG\controler\testControler;
 use GEG\controler\AjouterBesoinControler;
 use GEG\controler\CreneauControleur;
-
+use GEG\controler\ListBesoinControleur;
 
 $db = new DB();
 $db->addConnection(parse_ini_file("src/conf/conf.ini"));
@@ -68,7 +68,7 @@ $app->get("/ajouterBesoin/:idCreneau", function($idCreneau) {
     $controller = new AjouterBesoinControler();
     $controller->renderForm($idCreneau);
 })->name('route_ajouterBesoinform');
-$app->get("/ajoutBesoin/:idCreneau", function($idCreneau) {
+$app->post("/ajoutBesoin/:idCreneau", function($idCreneau) {
     $controller = new AjouterBesoinControler();
     $controller->ajouterBesoin($idCreneau);
 });
@@ -77,6 +77,10 @@ $app->get ("/test", function() {
   $controller = new testControler();
   $controller->afficher();
 
+});
+$app->get("/listeBesoin",function(){
+    $controler=new ListBesoinControleur();
+    $controler->render();
 });
 
 $app->run();
