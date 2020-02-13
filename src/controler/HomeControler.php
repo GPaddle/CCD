@@ -5,6 +5,7 @@ namespace GEG\controler;
 use \Illuminate\Database\Capsule\Manager as DB;
 use GEG\model\Liste;
 use GEG\model\Item;
+use GEG\model\User;
 use GEG\view\VueHome;
 use GEG\model\Creneau;
 use GEG\view\VuePrincipale;
@@ -18,7 +19,9 @@ class HomeControler
 		if (isset($_SESSION["user"])) {
 			$t = Creneau::orderBy("cycle")->orderBy("semaine")->orderBy("jour")->orderBy("debutHeure")->get();
 			$v = new VuePrincipale($t);
-			$v->render();
+
+			$user = User::select("isAdmin")->where("id", "=", $_SESSION["user"]["id"])->first();
+			$v->render($user->isAdmin);
 		} else {
 			$vGenerale = new VueGenerale();
 
