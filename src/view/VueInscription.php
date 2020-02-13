@@ -14,9 +14,9 @@ class VueInscription
         $html = <<<END
 			<body>
 				<h1>Inscription</h1>
-				<form method="post" action="inscription">
+				<form method="post" action="inscrire">
 					<label>Identifiant</label>
-					<input type="text" name="id">
+					<input type="text" name="nom">
 					<label>Mail</label>
 					<input type="mail" name="mail" >
 					<label>Mot de passe</label>
