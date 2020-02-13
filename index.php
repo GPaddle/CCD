@@ -55,7 +55,7 @@ $app->get("/inscrire",function (){
     $c =new connectionControler();
     $c->renderInscription();
 })->name("inscrire");
-$app->get("/inscription",function (){
+$app->post("/inscription",function (){
     $c=new connectionControler();
     $c->inscrire();
 });
@@ -86,7 +86,7 @@ $app->get("/home", function () {
     $controler->afficher();
 })->name('route_accueil');
 
-$app->get("/connexion", function () {
+$app->post("/connexion", function () {
     $controler = new connectionControler();
     $controler->seConnecter();
 })->name('connexion');
@@ -94,7 +94,7 @@ $app->get("/connexion", function () {
 $app->get("/listeBesoin",function(){
     $controler=new ListBesoinControleur();
     $controler->render();
-});
-$app->post("/seCo",function (){
 })->name('route_listeBesoin');
+$app->post("/seCo",function (){
+});
 $app->run();
