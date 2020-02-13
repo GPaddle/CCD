@@ -30,8 +30,12 @@ class connectionControler
         $app= \Slim\Slim::getInstance();
         $id=$app->request()->params('id');
         $mdp=$app->request()->params('mdp');
-        Authentification::authenticate($id,$mdp);
-        $app->redirectTo("route_home");
+        $retour=Authentification::authenticate($id,$mdp);
+        if ($retour==1) {
+            $app->redirectTo("route_home");
+        }else{
+            $app->redirectTo("connexion");
+        }
     }
     public function inscrire() {
         $app = \Slim\Slim::getInstance();
