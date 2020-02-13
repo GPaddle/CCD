@@ -26,7 +26,7 @@ class VueChoixCompteTest
      * @param $tab Le tableau à convertir au cas où
      * @return mixed le tableau
      */
-    private function convertirFormat($tab){
+     private function convertirFormat($tab){
         return $tab; // Au cas où le tableau reçu serait incompatible à la vue faite
     }
 
@@ -72,4 +72,9 @@ END;
         }
         return $res;
     }
+
+    public function render(){
+      return "";
+    }
+
 }
