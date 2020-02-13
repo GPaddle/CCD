@@ -94,14 +94,9 @@ $app->get("/listeBesoin",function(){
 $app->post("/seCo",function (){
 });
 
-$app->get("/inscriptionBesoin/:idCreneau", function($idCreneau) {
+$app->get("/inscriptionBesoin/:idBesoin", function($idBesoin) {
   $controler = new InscriptionBesoinControler();
-  $controler->renderForm($idCreneau);
-});
-
-$app->post("/inscriptionBesoin", function() {
-  $controler = new InscriptionBesoinControler();
-  $controler->ajouterBesoinInscription();
+  $controler->ajouterBesoinInscription($idBesoin);
 });
 
 $app->post("/supUser",function (){
