@@ -14,6 +14,7 @@ class connectionControler
         $user = User::where('id', '=', $id)->first();
 
         $_SESSION['user']['id'] = $id;
+        $_SESSION['user']['name'] = $user->nom;
 
 
         $v = new VueUtilisateur();

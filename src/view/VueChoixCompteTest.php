@@ -44,8 +44,9 @@ class VueChoixCompteTest
      */
     private function formatLigne($key, $v)
     {
+        $key+=1;
         $res = <<<END
-<div id="ligne"><a href="{$this->lien($key,$v)}">
+<div id="ligne"><a href="loginTest/$key">
 END;
 
         foreach ($v as $val => $val2) {
@@ -93,13 +94,17 @@ END;
      */
     public function afficher()
     {
+        
+        $app = \Slim\Slim::getInstance();
+        $urlHome = $app->urlFor('route_home');
+
         $res = $this->rechercherColone($this->tab);
         $tab = $this->convertirFormatTab($this->tab);
         foreach ($tab as $key => $v) {
             $k = $key+1;
             $res = <<<END
                 $res
-                <img src="/img/$k.jpg"></img>
+                <img src="$urlHome/img/$k.jpg"></img>
                 {$this->formatLigne($key,$v)}
 END;
         }
