@@ -17,7 +17,7 @@ class InscriptionBesoinControleur{
   {
     $besoinInscr = new InscriptionBesoin();
 
-    $besoinInscr->idUser = ;
+    $besoinInscr->idUser = $_SESSION['user']['id'];
     $besoin->idBesoin = $_POST['idBesoin'];
 
     $besoin->save();
