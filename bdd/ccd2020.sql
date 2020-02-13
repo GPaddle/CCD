@@ -39,9 +39,9 @@ INSERT INTO user (id, nom) VALUES
     id int,
     jour varchar(10),
     mois varchar(10),
-    annee int(),
-    debutHeure time(),
-    finHeure time(),
+    annee int,
+    debutHeure time,
+    finHeure time,
     primary key(id)
 );
 
