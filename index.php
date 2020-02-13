@@ -8,6 +8,7 @@ use GEG\controler\notFoundControler;
 use GEG\view\VueAjouterCreneau;
 use GEG\view\VueGenerale;
 use GEG\controler\ListUserControler;
+use GEG\controler\FormulaireBesoinControler;
 
 
 $db = new DB();
@@ -56,5 +57,10 @@ $app->get("/FormulaireAjouterCreneau", function() {
 	$a = new VueAjouterCreneau();
 	$a->render();
 });
+
+$app->get("/FormulaireAjoutBesoin", function() {
+    $a = new FormulaireBesoinControler();
+    $a->afficher();
+})->name('route_formulaireajoutbesoin');
 
 $app->run();

@@ -42,7 +42,7 @@ END;
         return $html;
 
     }
-    private function render(){
+    public function render(){
         $v= new VueGenerale();
         $v->render(<<<END
     {$this->afficherChoixBesoins()}
