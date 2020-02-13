@@ -7,9 +7,7 @@ use GEG\controler\connectionControler;
 use GEG\controler\notFoundControler;
 use GEG\view\VueAjouterCreneau;
 use GEG\view\VueGenerale;
-
 use GEG\controler\ListUserControler;
-use GEG\view\VueAjouterCreneau;
 
 
 $db = new DB();
@@ -31,7 +29,7 @@ $app->get("/ajoutCreneau", function () {
 $app->get("/loginTest", function () {
 
     $vGenerale = new VueGenerale();
-    
+
     $vGenerale->render("future page de choix des utilisateurs");
 
 
