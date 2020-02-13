@@ -51,7 +51,7 @@ $app->get('/listeUser', function () {
 
 $app->get('/', function () {
     $vGenerale = new VueGenerale();
-    $vGenerale->render("HOME");
+    $vGenerale->render("Connexion à la page");
 })->name('route_home');
 
 $app->get("/ajouterCreneau", function() {

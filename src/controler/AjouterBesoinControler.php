@@ -6,7 +6,7 @@
 use GEG\model\Role;
 	class AjouterBesoinControler {
 		public function renderForm($idCreneau) {
-			$roles = Role::select("label")->get();
+			$roles = Role::get();
 
 			$vue = new VueFormulaireBesoin($idCreneau, $roles);
 			$vue->render();

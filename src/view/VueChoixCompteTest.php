@@ -45,19 +45,22 @@ class VueChoixCompteTest
     private function formatLigne($key, $v)
     {
         $res = <<<END
-<div id="ligne"><a href="{$this->lien($key,$v)}">
+<div id="ligne"><tbody>
 END;
-
+        $k=$key+1;
         foreach ($v as $val => $val2) {
             $res .= <<<END
-                <div>$val2</div>
+    <tr>
+      <th scope="col"><a href="{$this->lien($key,$v)}"><div>$val2</div></a></th>
+      
+  
 END;
         }
 
 
-        $res = <<<END
-$res
-    </a>
+        $res .= <<<END
+    <th scope="col"><div><img src="./img/$k.jpg"/></div></th>
+    </tr></tbody>
 </div>
 END;
         return $res;
@@ -67,14 +70,12 @@ END;
     {
 
         return <<<END
-        <div id="ligne">
-            <div>
-                Id
-            </div>
-            <div>
-                Nom
-            </div>
-        </div>
+<thead>
+    <tr>
+      <th scope="col">Nom</th>
+      <th scope="col">Profil</th>
+    </tr>
+  </thead>
 END;
     }
     /**
@@ -99,7 +100,7 @@ END;
             $k = $key+1;
             $res = <<<END
                 $res
-                <img src="/img/$k.jpg"></img>
+                
                 {$this->formatLigne($key,$v)}
 END;
         }
@@ -110,6 +111,11 @@ END;
     public function render()
     {
         $vGenerale = new VueGenerale();
-        $vGenerale->render($this->afficher());
+        $vGenerale->render(<<<END
+<table class="table">
+{$this->afficher()}
+</table>
+END
+        );
     }
 }
