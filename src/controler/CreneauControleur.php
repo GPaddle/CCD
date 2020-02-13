@@ -7,6 +7,7 @@ use GEG\model\User;
 use GEG\view\VueHome;
 use GEG\view\VueAjouterCreneau;
 use GEG\date;
+use GEG\model\creneau;
 
 class CreneauControleur
 {
