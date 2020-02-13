@@ -8,6 +8,7 @@ use GEG\controler\notFoundControler;
 use GEG\view\VueAjouterCreneau;
 use GEG\view\VueGenerale;
 
+use GEG\controler\ListUserControler;
 $db = new DB();
 $db->addConnection(parse_ini_file("src/conf/conf.ini"));
 
@@ -40,10 +41,19 @@ $app->get('/loginTest/:id', function ($id) {
     $c->getUser($id);
 })->name('route_loginTestId');
 
+$app->get('/listeUser', function () {
+    $c = new ListUserControler();
+    $c->getAllUser();
+})->name('route_listeUser');
+
 $app->get('/', function () {
     $vGenerale = new VueGenerale();
     $vGenerale->render("HOME");
 })->name('route_home');
 
+$app->get("/FormulaireAjouterCreneau", function() {
+	$a = new VueAjouterCreneau();
+	$a->afficher();
+});
 
 $app->run();

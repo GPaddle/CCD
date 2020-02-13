@@ -19,7 +19,7 @@ class VueChoixCompteTest
      */
     public function __construct($tab)
     {
-        $this->tab;
+        $this->tab = $tab;
     }
 
     /**
@@ -27,17 +27,13 @@ class VueChoixCompteTest
      * @param $tab Le tableau à convertir au cas où
      * @return mixed le tableau
      */
-    private function convertirFormat($tab)
+    private function convertirFormatTab($tab)
     {
         $res = array();
-        $it = 0;
-        foreach ($tab as $key) {
-            $res[] += array();
-            foreach ($key as $libelle => $v) {
-                $res[$key];
-            }
-            $it++;
+        foreach ($tab as $ligne) {
+            $res[] = array($ligne->id, $ligne->nom);
         }
+        return $res;
     }
 
     /**
@@ -49,28 +45,35 @@ class VueChoixCompteTest
     private function formatLigne($key, $v)
     {
         $res = <<<END
-<a href="$this->lien($key,$v)">
+<div id="ligne"><a href="{$this->lien($key,$v)}">
 END;
-        foreach ($v as $val) {
-            $res += <<<END
-| $val |
+        foreach ($v as $val => $val2) {
+            $res = <<<END
+$res
+<div>$val2</div>
 END;
         }
-        $res += <<<END
-</a>
+        $res = <<<END
+$res
+</a></div>
 END;
         return $res;
     }
-    private function convertirEnColonne($tab)
+    private function rechercherColone($tab)
     {
-        return "";
+
+        return <<<END
+<div id="ligne"><div>Id</div><div>Nom</div></div>
+END;;
     }
     /**
      * Transforme les valeurs en lien
      */
     private function lien($key, $v)
     {
-        return "#"; // a modif
+        $app = \Slim\Slim::getInstance();
+        $urlModif = $app->urlFor('route_loginTest', ['id' => $v[0]]);
+        return $urlModif;
     }
 
     /**
@@ -79,16 +82,19 @@ END;
      */
     public function afficher()
     {
-        $res = $this->convertirEnColonne($this->tab);
-        $tab = $this->convertirFormat($this->tab);
+        $res = $this->rechercherColone($this->tab);
+        $tab = $this->convertirFormatTab($this->tab);
         foreach ($tab as $key => $v) {
-            $res += $this->formatLigne($key, $v);
+            $res = <<<END
+$res
+{$this->formatLigne($key,$v)}
+END;
         }
         return $res;
     }
 
     public function render()
     {
-        return "";
+        echo $this->afficher();
     }
 }
