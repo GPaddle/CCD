@@ -6,8 +6,10 @@ use \Illuminate\Database\Capsule\Manager as DB;
 use GEG\model\Liste;
 use GEG\model\Item;
 use GEG\model\User;
-use GEG\view\VueHome;
+use GEG\model\Besoin;
+use GEG\model\Role;
 use GEG\model\Creneau;
+use GEG\view\VueHome;
 use GEG\view\VuePrincipale;
 use GEG\view\VueGenerale;
 
@@ -18,7 +20,12 @@ class HomeControler
 		$app = \Slim\Slim::getInstance();
 		if (isset($_SESSION["user"])) {
 			$t = Creneau::orderBy("cycle")->orderBy("semaine")->orderBy("jour")->orderBy("debutHeure")->get();
-			$v = new VuePrincipale($t);
+			$k;
+			foreach ($t as $value) {
+				$b = Besoin::where("idCreneau","=",$value->id)->join("role","besoin.idRole","=","role.id")->distinct("label")->get();
+				$k[] = array($value,$b); 
+			}
+			$v = new VuePrincipale($k);
 
 			$user = User::select("isAdmin")->where("id", "=", $_SESSION["user"]["id"])->first();
 			$v->render($user->isAdmin);

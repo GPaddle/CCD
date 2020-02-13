@@ -25,12 +25,17 @@ END;
 		$vGenerale = new VueGenerale();
     $html = "oui";
     $content ="";
+    $besoins = "";
     foreach ($this->t as $value) {
-      $id = $value->id;
+      $id = $value[0]->id;
+      foreach ($value[1] as $v) {
+        $besoins .="<li>$v->label</li>";
+      }
 
       $content .= <<<END
   <div id="crenau-1">
-    <span>{$value->debutHeure}h à {$value->finHeure}h | Jour : $value->jour | Semaine : $value->semaine | Cycle : $value->cycle</span>
+    <span>{$value[0]->debutHeure}h à {$value[0]->finHeure}h | Jour : {$value[0]->jour} | Semaine : {$value[0]->semaine} | Cycle : {$value[0]->cycle}</span>
+    <span class='ml-5'>1 / 6</span>
     <button type="button" class="float-right btn btn-danger" data-target="#creneau$id" data-toggle="modal">Modifier</button>
     <hr>
   </div>
@@ -39,12 +44,15 @@ END;
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="creneauLabel">Modifier créneau de {$value->debutHeure}h à {$value->finHeure}h | Jour : $value->jour | Semaine : $value->semaine | Cycle : $value->cycle</h5>
+          <h5 class="modal-title" id="creneauLabel">Modifier créneau de {$value[0]->debutHeure}h à {$value[0]->finHeure}h | Jour : {$value[0]->jour} | Semaine : {$value[0]->semaine} | Cycle : {$value[0]->cycle}</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
+          <ul>
+            $besoins
+          </ul>
           <a href="ajouterBesoin/$id" class="btn btn-success">Ajouter un besoin</a>
         </div>
       </div>
