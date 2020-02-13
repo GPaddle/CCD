@@ -96,7 +96,7 @@ END;
             $k = $key+1;
             $res .= <<<END
             <div>
-                <img src="$urlHome/img/$k.jpg"></img>
+                <img src="{$urlHome}img/$k.jpg"></img>
                 {$this->formatLigne($key,$v)}
             </div>
 END;
