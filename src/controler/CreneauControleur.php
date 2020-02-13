@@ -19,7 +19,7 @@ class CreneauControleur
 
   public function SaveCreneau(){
     $c = new Creneau();
-  	$res = calc_date('2010-02-10',$_POST['Semaine'],(int)$_POST['Jour']);
+  	$res = \calc_date('2010-02-10',$_POST['Semaine'],(int)$_POST['Jour']);
     $c->jour =$res->jour_nom;
     $c->mois =$res->mois_nom;
     $c->annee =$res->annee_no;

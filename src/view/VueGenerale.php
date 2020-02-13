@@ -6,10 +6,13 @@ class VueGenerale
 {
 	function header()
 	{
-		
-				$app = \Slim\Slim::getInstance();
-				$urlHome = $app->urlFor('route_home');
 
+		$app = \Slim\Slim::getInstance();
+		$urlHome = $app->urlFor('route_home');
+
+    if($urlHome == "/") {
+      $urlHome = "";
+    }
 
 		$html = <<<END
 		
@@ -39,7 +42,10 @@ END;
 
 	function navBarre()
 	{
-		
+
+		$user = isset($_SESSION['user']['name']) ? $_SESSION['user']['name'] : "";
+		$id = isset($_SESSION['user']['id']) ? $_SESSION['user']['id'] : 0;
+
 		$app = \Slim\Slim::getInstance();
 		$urlHome = $app->urlFor('route_home');
 
@@ -87,8 +93,8 @@ END;
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
-                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">$user</span>
+                <img class="img-profile rounded-circle" src="$urlHome/img/$id.jpg">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -122,7 +128,7 @@ END;
 	public function js()
 	{
 
-		
+
 		$app = \Slim\Slim::getInstance();
 		$urlHome = $app->urlFor('route_home');
 

@@ -44,40 +44,26 @@ class VueChoixCompteTest
      */
     private function formatLigne($key, $v)
     {
+        $key+=1;
         $res = <<<END
-<div id="ligne"><tbody>
+<div class="ligne"><a href="loginTest/$key">
 END;
-        $k=$key+1;
+
         foreach ($v as $val => $val2) {
             $res .= <<<END
-    <tr>
-      <th scope="col"><a href="{$this->lien($key,$v)}"><div>$val2</div></a></th>
-      
-  
+                <div>$val2</div>
 END;
         }
 
 
-        $res .= <<<END
-    <th scope="col"><div><img src="./img/$k.jpg"/></div></th>
-    </tr></tbody>
+        $res = <<<END
+$res
+    </a>
 </div>
 END;
         return $res;
     }
 
-    private function rechercherColone($tab)
-    {
-
-        return <<<END
-<thead>
-    <tr>
-      <th scope="col">Nom</th>
-      <th scope="col">Profil</th>
-    </tr>
-  </thead>
-END;
-    }
     /**
      * Transforme les valeurs en lien
      */
@@ -92,30 +78,35 @@ END;
      * Donne l'affichage du tableau de la vue
      * @return string
      */
-    public function afficher()
-    {
-        $res = $this->rechercherColone($this->tab);
-        $tab = $this->convertirFormatTab($this->tab);
-        foreach ($tab as $key => $v) {
-            $k = $key+1;
-            $res = <<<END
-                $res
-                
-                {$this->formatLigne($key,$v)}
-END;
-        }
-
-        return $res;
-    }
-
     public function render()
     {
         $vGenerale = new VueGenerale();
-        $vGenerale->render(<<<END
-<table class="table">
-{$this->afficher()}
-</table>
-END
-        );
+
+
+        $app = \Slim\Slim::getInstance();
+        $urlHome = $app->urlFor('route_home');
+
+        if($urlHome == "/") {
+            $urlHome = "";
+        }
+
+        $res="<div class='flex'>";
+        $tab = $this->convertirFormatTab($this->tab);
+        foreach ($tab as $key => $v) {
+            $k = $key+1;
+            $res .= <<<END
+            <div>
+                <img src="$urlHome/img/$k.jpg"></img>
+                {$this->formatLigne($key,$v)}
+            </div>
+END;
+        }
+
+        $res.="</div>";
+
+
+
+
+        $vGenerale->render($res);
     }
 }

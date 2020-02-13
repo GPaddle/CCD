@@ -33,3 +33,7 @@ section {
 }
 
 footer {}
+
+.flex{
+	display: flex;
+}
