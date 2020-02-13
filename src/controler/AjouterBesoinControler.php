@@ -2,7 +2,7 @@
 	namespace GEG\controler;
 
 	use GEG\view\VueFormulaireBesoin;
-
+use GEG\model\Role;
 	class AjouterBesoinControler {
 		public function renderForm($idCreneau) {
 			$roles = Role::select("label")->get();

@@ -3,19 +3,19 @@
 
 namespace GEG\view;
 
-use GEG\model\Role;
 /**
  * Class VueFormulaireBesoin
  * @package GEG\view
  */
 class VueFormulaireBesoin
 {
-    private $role;
+    private $role,$idCreneaux;
     /**
      * VueFormulaireBesoin constructor.
      */
-    public function __construct($role)
+    public function __construct($idCrenaux,$role)
     {
+        $this->idCreneaux=$idCrenaux;
         $this->role=$role;
     }
 
@@ -38,7 +38,7 @@ class VueFormulaireBesoin
 END;
         foreach ($besoin as $key => $besoin) {
             $html .= <<<END
-<option value="$besoin">$besoin</option>
+<option value="$key">$besoin</option>
 
 END;
         }
@@ -48,24 +48,22 @@ END;
         return $html;
 
     }
+
+    /**
+     * @return string
+     */
     private function afficher(){
-        $html=$this->afficherChoixBesoins();
-        $html=<<<END
-<form action="ajoutBesoin" method="post">
-$html
+        return <<<END
+<form action="ajoutBesoin/{$this->idCreneaux}" method="post" >
+{$this->afficherChoixBesoins()}
 <input type="int" name="qte" value="0" class="input_nbr" />
-<input type="submit" value="Valider" />
+<input type="submit" value="Valider"  />
 </form>
 END;
-
-        return $html;
 }
     public function render(){
         $v= new VueGenerale();
-        $v->render(<<<END
-    {$this->afficher()}
-END
-        );
+        $v->render($this->afficher());
     }
 
 
