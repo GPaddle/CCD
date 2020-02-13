@@ -64,20 +64,6 @@ END;
         return $res;
     }
 
-    private function rechercherColone($tab)
-    {
-
-        return <<<END
-        <div id="ligne">
-            <div>
-                Id
-            </div>
-            <div>
-                Nom
-            </div>
-        </div>
-END;
-    }
     /**
      * Transforme les valeurs en lien
      */
@@ -92,29 +78,32 @@ END;
      * Donne l'affichage du tableau de la vue
      * @return string
      */
-    public function afficher()
-    {
-        
-        $app = \Slim\Slim::getInstance();
-        $urlHome = $app->urlFor('route_home');
-
-        $res = $this->rechercherColone($this->tab);
-        $tab = $this->convertirFormatTab($this->tab);
-        foreach ($tab as $key => $v) {
-            $k = $key+1;
-            $res = <<<END
-                $res
-                <img src="$urlHome/img/$k.jpg"></img>
-                {$this->formatLigne($key,$v)}
-END;
-        }
-
-        return $res;
-    }
-
     public function render()
     {
         $vGenerale = new VueGenerale();
-        $vGenerale->render($this->afficher());
+
+
+        $app = \Slim\Slim::getInstance();
+        $urlHome = $app->urlFor('route_home');
+
+        $res="<div class='flex'>";
+
+        $tab = $this->convertirFormatTab($this->tab);
+        foreach ($tab as $key => $v) {
+            $k = $key+1;
+            $res .= <<<END
+            <div>
+                <img src="$urlHome/img/$k.jpg"></img>
+                {$this->formatLigne($key,$v)}
+            </div>
+END;
+        }
+
+        $res.="</div>";
+
+
+
+
+        $vGenerale->render($res);
     }
 }
