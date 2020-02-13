@@ -18,7 +18,7 @@ class HomeControler {
 		    $v->render();
     	} else {
     		$vGenerale = new VueGenerale();
-    		$vGenerale->render("<a href={$app->urlFor('connexion')}>Connexion à la page</a>");
+    		$vGenerale->render("<a href={$app->urlFor('connexion')}>Connexion à la page</a><br><a href={$app->urlFor('inscrire')}>S'inscrire à la page</a>");
     	}
     }
 }
