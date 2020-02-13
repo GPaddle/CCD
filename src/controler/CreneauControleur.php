@@ -19,10 +19,9 @@ class CreneauControleur
 
   public function SaveCreneau(){
     $c = new Creneau();
-  	$res = calc_date('2010-02-10',$_POST['Semaine'],(int)$_POST['Jour']);
-    $c->jour =$res->jour_nom;
-    $c->mois =$res->mois_nom;
-    $c->annee =$res->annee_no;
+    $c->jour = $_POST["Jour"];
+    $c->semaine = $_POST["Semaine"];
+    $c->cycle = $_POST["cycle"];
     $c->debutHeure = $_POST['HeureD'];
     $c->finHeure = $_POST['HeureF'];
     $c->save();

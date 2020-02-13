@@ -33,3 +33,12 @@ section {
 }
 
 footer {}
+
+.flex{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+.ligne > a > div{
+	text-align: center;
+}

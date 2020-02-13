@@ -44,8 +44,9 @@ class VueChoixCompteTest
      */
     private function formatLigne($key, $v)
     {
+        $key+=1;
         $res = <<<END
-<div id="ligne"><a href="{$this->lien($key,$v)}">
+<div class="ligne"><a href="loginTest/$key">
 END;
 
         foreach ($v as $val => $val2) {
@@ -63,20 +64,6 @@ END;
         return $res;
     }
 
-    private function rechercherColone($tab)
-    {
-
-        return <<<END
-        <div id="ligne">
-            <div>
-                Id
-            </div>
-            <div>
-                Nom
-            </div>
-        </div>
-END;
-    }
     /**
      * Transforme les valeurs en lien
      */
@@ -91,25 +78,35 @@ END;
      * Donne l'affichage du tableau de la vue
      * @return string
      */
-    public function afficher()
-    {
-        $res = $this->rechercherColone($this->tab);
-        $tab = $this->convertirFormatTab($this->tab);
-        foreach ($tab as $key => $v) {
-            $k = $key+1;
-            $res = <<<END
-                $res
-                <img src="/img/$k.jpg"></img>
-                {$this->formatLigne($key,$v)}
-END;
-        }
-
-        return $res;
-    }
-
     public function render()
     {
         $vGenerale = new VueGenerale();
-        $vGenerale->render($this->afficher());
+
+
+        $app = \Slim\Slim::getInstance();
+        $urlHome = $app->urlFor('route_home');
+
+        if($urlHome == "/") {
+            $urlHome = "";
+        }
+
+        $res="<div class='flex'>";
+        $tab = $this->convertirFormatTab($this->tab);
+        foreach ($tab as $key => $v) {
+            $k = $key+1;
+            $res .= <<<END
+            <div>
+                <img src="$urlHome/img/$k.jpg"></img>
+                {$this->formatLigne($key,$v)}
+            </div>
+END;
+        }
+
+        $res.="</div>";
+
+
+
+
+        $vGenerale->render($res);
     }
 }

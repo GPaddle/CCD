@@ -6,9 +6,9 @@ class VueGenerale
 {
 	function header()
 	{
-		
-				$app = \Slim\Slim::getInstance();
-				$urlHome = $app->urlFor('route_home');
+
+		$app = \Slim\Slim::getInstance();
+		$urlHome = $app->urlFor('route_home');
 
 
 		$html = <<<END
@@ -23,7 +23,6 @@ class VueGenerale
 	  
 		<!-- Custom fonts for this template-->
         <link rel="stylesheet" type="text/css" href="$urlHome/style/style.css">
-		<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 		<link href="$urlHome/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link
     href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
@@ -43,9 +42,16 @@ END;
 
 	function navBarre()
 	{
-		
+
+		$user = isset($_SESSION['user']['name']) ? $_SESSION['user']['name'] : "";
+		$id = isset($_SESSION['user']['id']) ? $_SESSION['user']['id'] : 0;
+
 		$app = \Slim\Slim::getInstance();
 		$urlHome = $app->urlFor('route_home');
+
+    if($urlHome == "/") {
+      $urlHome = "";
+    }
 
 
 		$html = <<<END
@@ -84,15 +90,42 @@ END;
               </div>
             </li>
 
+			<li class="nav-item dropdown no-arrow">
+			<a class="nav-link dropdown-toggle" href="$urlHome" id="userDropdown" role="button" data-toggle="dropdown"
+			  aria-haspopup="true" aria-expanded="false">
+			  <span class="mr-2 d-none d-lg-inline text-gray-600 small" >Accueil</span>
+			</a>
+			<!-- Dropdown - User Information -->
+			<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+			  <a class="dropdown-item" href="#">
+				<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+				Profile
+			  </a>
+			  <a class="dropdown-item" href="#">
+				<i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+				Settings
+			  </a>
+			  <a class="dropdown-item" href="#">
+				<i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+				Activity Log
+			  </a>
+			  <div class="dropdown-divider"></div>
+			  <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+				<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+				Logout
+			  </a>
+			</div>
+		  </li>
+
 
             <div class="topbar-divider d-none d-sm-block"></div>
 
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+              <a class="nav-link dropdown-toggle" href="$urlHome/loginTest/$id" id="userDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
-                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">$user</span>
+                <img class="img-profile rounded-circle" src="$urlHome/img/$id.jpg">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -126,28 +159,28 @@ END;
 	public function js()
 	{
 
-		
+
 		$app = \Slim\Slim::getInstance();
 		$urlHome = $app->urlFor('route_home');
 
+    if($urlHome == "/") {
+      $urlHome = "";
+    }
 
 		$html = <<<END
     <!-- Bootstrap core JavaScript-->
-  <script src="$urlHome/vendor/jquery/jquery.min.js"></script>
+  <!--script src="$urlHome/vendor/jquery/jquery.min.js"></script-->
   <script src="$urlHome/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
   <script src="$urlHome/vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Custom scripts for all pages-->
-  <script src="$urlHome/js/sb-admin-2.min.js"></script>
-
-  <!-- Page level plugins -->
-  <script src="$urlHome/vendor/chart.js/Chart.min.js"></script>
+  <!--script src="$urlHome/js/sb-admin-2.min.js"></script-->
 
   <!-- Page level custom scripts -->
-  <script src="$urlHome/js/demo/chart-area-demo.js"></script>
-  <script src="$urlHome/js/demo/chart-pie-demo.js"></script>
+  <!--script src="$urlHome/js/demo/chart-area-demo.js"></script>
+  <script src="$urlHome/js/demo/chart-pie-demo.js"></script-->
 END;
 
 		return $html;
