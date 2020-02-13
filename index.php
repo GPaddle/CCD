@@ -51,7 +51,9 @@ $app->get('/listeUser', function () {
 
 $app->get('/', function () {
     $vGenerale = new VueGenerale();
-    $vGenerale->render("Connexion à la page");
+    $app = \Slim\Slim::getInstance();
+    $urlModif = $app->urlFor('connexion');
+    $vGenerale->render("<a href={$urlModif}>Connexion à la page</a>");
 })->name('route_home');
 
 $app->get("/ajouterCreneau", function() {
@@ -78,6 +80,10 @@ $app->get ("/test", function() {
   $controller->afficher();
 
 });
+$app->get("/connexion",function(){
+    $controler=new connectionControler();
+    $controler->seConnecter();
+})->name('connexion');
 $app->get("/listeBesoin",function(){
     $controler=new ListBesoinControleur();
     $controler->render();

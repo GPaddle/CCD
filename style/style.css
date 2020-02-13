@@ -37,3 +37,6 @@ footer {}
 .flex{
 	display: flex;
 }
+.ligne > a > div{
+	text-align: center;
+}
