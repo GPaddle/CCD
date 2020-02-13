@@ -106,7 +106,7 @@ $app->post("/inscriptionBesoin", function() {
 
 $app->post("/supUser",function (){
     $c=new connectionControler();
-    $c->supprimer($_SESSION['id']);
-});
+    $c->supprimer($_SESSION['username']['id']);
+})->name("supCompte");
 
 $app->run();

@@ -20,12 +20,11 @@ class Authentification
             if($verifPassword == $password){
                 $hash = password_hash($password,PASSWORD_BCRYPT);
                 $compte = new User();
-                $compte->nom = $username;
+                $compte->nom = $userName;
                 $compte->mdp = $hash;
                 $compte->mail=$mail;
                 $compte->save();
-                $_SESSION['id'] = $compte->id;
-                $_SESSION['username'] = $compte->userName;
+                $_SESSION['user'] = array("id"=>$compte->id);
             }else{
                 $retour = 1;
             }
@@ -69,7 +68,7 @@ class Authentification
         session_destroy();
         // créer variable de session = profil chargé
         session_start();
-        $_SESSION = array( 'username' => $compte['userName'],'id' => $compte['id']);
+        $_SESSION['user'] = array('id' => $compte['id']);
 
 
     }
