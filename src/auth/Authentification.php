@@ -20,12 +20,11 @@ class Authentification
             if($verifPassword == $password){
                 $hash = password_hash($password,PASSWORD_BCRYPT);
                 $compte = new User();
-                $compte->nom = $username;
-                $compte->password = $hash;
+                $compte->nom = $userName;
+                $compte->mdp = $hash;
                 $compte->mail=$mail;
                 $compte->save();
-                $_SESSION['id'] = $compte->id;
-                $_SESSION['username'] = $compte->userName;
+                $_SESSION['user'] = array("id"=>$compte->id);
             }else{
                 $retour = 1;
             }
@@ -47,7 +46,7 @@ class Authentification
     public static function authenticate ( $username, $password ) {
         // charger utilisateur $user
         $retour=false;
-        $compte = User::where('name','=',$username)->first();
+        $compte = User::where('nom','=',$username)->first();
         // vérifier $user->hash == hash($password)
         if(password_verify($password,$compte['mdp'])){
             self::loadProfile($compte['id']);
@@ -69,7 +68,7 @@ class Authentification
         session_destroy();
         // créer variable de session = profil chargé
         session_start();
-        $_SESSION = array( 'username' => $compte['userName'],'id' => $compte['id']);
+        $_SESSION['user'] = array('id' => $compte['id']);
 
 
     }

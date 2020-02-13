@@ -53,7 +53,7 @@ END;
 		$urlPagePerso = $app->urlFor('route_loginTestId', ['id' => $id]);
 
 		$urlDeconnexion = $app->urlFor('route_deconnexion');
-
+        $urlDeInscrire = $app->urlFor('supCompte');
 		//		if (isset($_SESSION['user'])) {
 		$usrSection = `
 		
@@ -85,6 +85,10 @@ END;
 			<a class="dropdown-item" href="$urlDeconnexion">
 			  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
 			  Logout
+			</a>
+			<a class="dropdown-item" href="$urlDeInscrire">
+			  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+			  Se désinscrire
 			</a>
 		  </div>
 		</li>
@@ -186,7 +190,7 @@ END;
 		</div>
 		
 		<script>
-		let txt="Copyright &copy; Your Website "
+		let txt="Copyright &copy; Blop@IUTNC2019-2020 : "
 		txt+=new Date(Date.now()).getYear()+1900;
 
 		document.querySelector("#date").innerHTML=txt;

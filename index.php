@@ -12,6 +12,7 @@ use GEG\controler\AjouterBesoinControler;
 use GEG\controler\CreneauControleur;
 use GEG\controler\ListBesoinControleur;
 use GEG\controler\HomeControler;
+use GEG\controler\InscriptionBesoinControler;
 
 $db = new DB();
 $db->addConnection(parse_ini_file("src/conf/conf.ini"));
@@ -33,7 +34,7 @@ $app->get('/loginTest/:id', function ($id) {
 $app->get('/deconnexion', function () use ($app){
     $c = new connectionControler();
     $c->deconnexion();
-    $app->response->redirect($app->urlFor('route_listeUser'),303);
+    $app->response->redirect($app->urlFor('route_home'),303);
 })->name('route_deconnexion');
 
 $app->get('/listeUser', function () {
@@ -55,7 +56,6 @@ $app->post("/inscrire",function (){
     $c=new connectionControler();
     $c->inscrire();
 });
-
 $app->get("/ajouterCreneau", function () {
     $a = new CreneauControleur();
     $a->afficher();
@@ -64,7 +64,7 @@ $app->get("/ajouterCreneau", function () {
 $app->post("/ajouterCreneau", function () use($app) {
     $a = new CreneauControleur();
     $a->SaveCreneau();
-    $app->response->redirect($app->urlFor('route_accueil'),303);
+    $app->response->redirect($app->urlFor('route_home'),303);
 })->name('route_ajoutCreneau_post');
 
 $app->get("/ajouterBesoin/:idCreneau", function ($idCreneau) {
@@ -82,9 +82,31 @@ $app->get("/connexion", function () {
     $controler->seConnecter();
 })->name('connexion');
 
+$app->post("/connexion", function () {
+    $controler = new connectionControler();
+    $controler->authentifier();
+});
+
 $app->get("/listeBesoin",function(){
     $controler=new ListBesoinControleur();
     $controler->render();
+})->name('route_listeBesoin');
+$app->post("/seCo",function (){
 });
+
+$app->get("/inscriptionBesoin/:idCreneau", function($idCreneau) {
+  $controler = new InscriptionBesoinControler();
+  $controler->renderForm($idCreneau);
+});
+
+$app->post("/inscriptionBesoin", function() {
+  $controler = new InscriptionBesoinControler();
+  $controler->ajouterBesoinInscription();
+});
+
+$app->post("/supUser",function (){
+    $c=new connectionControler();
+    $c->supprimer($_SESSION['username']['id']);
+})->name("supCompte");
 
 $app->run();
