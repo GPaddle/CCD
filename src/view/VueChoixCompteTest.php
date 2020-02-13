@@ -17,25 +17,28 @@ class VueChoixCompteTest
      * VueChoixCompteTest constructor.
      * @param $tab Le tableau
      */
-    public function __construct($tab){
+    public function __construct($tab)
+    {
         $this->tab;
-}
+    }
 
     /**
      * Converti un tableau incompatible à la vue dans un tableau compatible
      * @param $tab Le tableau à convertir au cas où
      * @return mixed le tableau
      */
-    private function convertirFormat($tab){
-        $res=array();
-        $it=0;
-        foreach ($tab as $key ){
-            $res[]+=array();
-            foreach ($key as $libelle => $v ){
+    private function convertirFormat($tab)
+    {
+        $res = array();
+        $it = 0;
+        foreach ($tab as $key) {
+            $res[] += array();
+            foreach ($key as $libelle => $v) {
                 $res[$key];
             }
             $it++;
         }
+    }
 
     /**
      * Converti les valeurs en ligne html
@@ -43,27 +46,30 @@ class VueChoixCompteTest
      * @param $v Les valeurs
      * @return string Les valeurs convertir en ligne
      */
-    private function formatLigne($key,$v){
-        $res=<<<END
+    private function formatLigne($key, $v)
+    {
+        $res = <<<END
 <a href="$this->lien($key,$v)">
 END;
-        foreach ($v as $val){
-            $res+=<<<END
+        foreach ($v as $val) {
+            $res += <<<END
 | $val |
 END;
         }
-        $res+=<<<END
+        $res += <<<END
 </a>
 END;
         return $res;
     }
-    private function convertirEnColonne($tab){
+    private function convertirEnColonne($tab)
+    {
         return "";
     }
     /**
      * Transforme les valeurs en lien
      */
-    private function lien($key,$v){
+    private function lien($key, $v)
+    {
         return "#"; // a modif
     }
 
@@ -71,17 +77,18 @@ END;
      * Donne l'affichage du tableau de la vue
      * @return string
      */
-    public function afficher(){
-        $res=$this->convertirEnColonne($this->tab);
-        $tab=$this->convertirFormat($this->tab);
-        foreach ($tab as $key => $v){
-            $res+=$this->formatLigne($key,$v);
+    public function afficher()
+    {
+        $res = $this->convertirEnColonne($this->tab);
+        $tab = $this->convertirFormat($this->tab);
+        foreach ($tab as $key => $v) {
+            $res += $this->formatLigne($key, $v);
         }
         return $res;
     }
 
-    public function render(){
-      return "";
+    public function render()
+    {
+        return "";
     }
-
 }

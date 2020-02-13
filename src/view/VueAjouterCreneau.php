@@ -2,8 +2,14 @@
 
 namespace GEG\view;
 
-echo
-	"<form action=../index.php/ajouterCreneau method=post>
+class VueAjouterCreneau
+{
+	public function render()
+	{
+		$vGenerale = new VueGenerale();
+
+		$vGenerale->render(
+			"<form action=/ajouterCreneau method=post>
 	<p>Jour : <input type=number name=Jour min=1 max=7 step=1/></p>
 	<p>
 		<label for='Semaine'>
@@ -20,4 +26,7 @@ echo
 	<p>Heure de fin : <input type=time name=HeureF step=3600/></p>
 	<p><input type=submit value=OK></p>
 
-	</form>";
+	</form>"
+		);
+	}
+}
