@@ -31,7 +31,7 @@ class VueChoixCompteTest
     {
         $res = array();
         foreach ($tab as $ligne) {
-            $res[] = array($ligne->id, $ligne->nom);
+            $res[] = array($ligne->nom);
         }
         return $res;
     }
