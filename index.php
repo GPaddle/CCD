@@ -63,4 +63,9 @@ $app->get("/FormulaireAjoutBesoin", function() {
     $a->afficher();
 })->name('route_formulaireajoutbesoin');
 
+$app->get("/ajouterBesoin", function() {
+    $controller = new AjouterBesoinControlleur();
+    $controller->renderForm();
+})
+
 $app->run();
