@@ -19,10 +19,9 @@ class connectionControler
         $_SESSION['user']['id'] = $id;
         $_SESSION['user']['name'] = $user->nom;
 
-        $nbHRestant = $user->dureePermanances();
 
         $v = new VueUtilisateur();
-        $v->render($user,$nbHRestant);
+        $v->render($user);
     }
     public function seConnecter()
     {
@@ -37,22 +36,25 @@ class connectionControler
         $retour = Authentification::authenticate($id, $mdp);
         if ($retour) {
             $app->redirectTo("route_home");
-        } else {
+        }else{
+            setcookie('err',serialize("Echec de l'authentification"),time()+10,"./");
             $app->redirectTo("connexion");
+
         }
     }
     public function inscrire()
     {
         $app = \Slim\Slim::getInstance();
-        $nom = $app->request()->params('nom');
-        $mdp = $app->request()->params('mdp');
-        $mdp2 = $app->request()->params('mdp2');
-        $mail = $app->request()->params('mail');
-        $retour = Authentification::createUser($nom, $mdp, $mdp2, $mail);
-        if ($retour == 1 && $retour == 2) {
-            $app->redirectTo("route_home");
-        } else {
+        $nom=$app->request()->params('nom');
+        $mdp=$app->request()->params('mdp');
+        $mdp2=$app->request()->params('mdp2');
+        $mail=$app->request()->params('mail');
+        $retour=Authentification::createUser($nom,$mdp,$mdp2,$mail);
+        if ($retour===1||$retour===2) {
+            setcookie('err2',serialize("Echec de l'inscription"),time()+10,"./");
             $app->redirectTo("inscrire");
+        }else{
+            $app->redirectTo("route_home");
         }
     }
     public function renderInscription()

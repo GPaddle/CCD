@@ -24,23 +24,19 @@ CREATE TABLE user (
   isAdmin boolean DEFAULT false
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO user (id, nom,mdp,mail) VALUES
-(1, 'Cassandre','$2y$10$gXwubIZFuTb.YLgKNsgEl.EnJYYWHqW4hyCnlUWjv6UvpvKYjsGaa','vide'),
-(2, 'Achille','$2y$10$gXwubIZFuTb.YLgKNsgEl.EnJYYWHqW4hyCnlUWjv6UvpvKYjsGaa','vide'),
-(3, 'Calypso','$2y$10$gXwubIZFuTb.YLgKNsgEl.EnJYYWHqW4hyCnlUWjv6UvpvKYjsGaa','vide'),
-(4, 'Bacchus','$2y$10$gXwubIZFuTb.YLgKNsgEl.EnJYYWHqW4hyCnlUWjv6UvpvKYjsGaa','vide'),
-(5, 'Diane','$2y$10$gXwubIZFuTb.YLgKNsgEl.EnJYYWHqW4hyCnlUWjv6UvpvKYjsGaa','vide'),
-(6, 'Clark','$2y$10$gXwubIZFuTb.YLgKNsgEl.EnJYYWHqW4hyCnlUWjv6UvpvKYjsGaa','vide'),
-(7, 'Helene','$2y$10$gXwubIZFuTb.YLgKNsgEl.EnJYYWHqW4hyCnlUWjv6UvpvKYjsGaa','vide'),
-(8, 'Jason','$2y$10$gXwubIZFuTb.YLgKNsgEl.EnJYYWHqW4hyCnlUWjv6UvpvKYjsGaa','vide'),
-(9, 'Bruce','$2y$10$gXwubIZFuTb.YLgKNsgEl.EnJYYWHqW4hyCnlUWjv6UvpvKYjsGaa','vide'),
-(10, 'Pénélope','$2y$10$gXwubIZFuTb.YLgKNsgEl.EnJYYWHqW4hyCnlUWjv6UvpvKYjsGaa','vide');
-
-
 INSERT INTO user (id, nom,mdp,mail,isAdmin) VALUES
-(11, 'Ariane','$2y$10$gXwubIZFuTb.YLgKNsgEl.EnJYYWHqW4hyCnlUWjv6UvpvKYjsGaa','vide',true),
-(12, 'Lois','$2y$10$gXwubIZFuTb.YLgKNsgEl.EnJYYWHqW4hyCnlUWjv6UvpvKYjsGaa','vide',true);
-
+(1, 'Cassandre','$2y$10$8fU9ac6GKTEf5bxFkJTMEexzyZGA.XBdshyqhTGF8/wRWSTp.ErMi','vide',false),
+(2, 'Achille','$2y$10$8fU9ac6GKTEf5bxFkJTMEexzyZGA.XBdshyqhTGF8/wRWSTp.ErMi','vide',false),
+(3, 'Calypso','$2y$10$8fU9ac6GKTEf5bxFkJTMEexzyZGA.XBdshyqhTGF8/wRWSTp.ErMi','vide',false),
+(4, 'Bacchus','$2y$10$8fU9ac6GKTEf5bxFkJTMEexzyZGA.XBdshyqhTGF8/wRWSTp.ErMi','vide',false),
+(5, 'Diane','$2y$10$8fU9ac6GKTEf5bxFkJTMEexzyZGA.XBdshyqhTGF8/wRWSTp.ErMi','vide',false),
+(6, 'Clark','$2y$10$8fU9ac6GKTEf5bxFkJTMEexzyZGA.XBdshyqhTGF8/wRWSTp.ErMi','vide',false),
+(7, 'Helene','$2y$10$8fU9ac6GKTEf5bxFkJTMEexzyZGA.XBdshyqhTGF8/wRWSTp.ErMi','vide',false),
+(8, 'Jason','$2y$10$8fU9ac6GKTEf5bxFkJTMEexzyZGA.XBdshyqhTGF8/wRWSTp.ErMi','vide',false),
+(9, 'Bruce','$2y$10$8fU9ac6GKTEf5bxFkJTMEexzyZGA.XBdshyqhTGF8/wRWSTp.ErMi', 'vide',false),
+(10, 'Pénélope','$2y$10$8fU9ac6GKTEf5bxFkJTMEexzyZGA.XBdshyqhTGF8/wRWSTp.ErMi','vide',false),
+(11, 'Ariane','$2y$10$8fU9ac6GKTEf5bxFkJTMEexzyZGA.XBdshyqhTGF8/wRWSTp.ErMi','vide',false),
+(12, 'Lois','$2y$10$8fU9ac6GKTEf5bxFkJTMEexzyZGA.XBdshyqhTGF8/wRWSTp.ErMi','vide',false);
 
 DROP TABLE IF EXISTS `creneau`;
 create table creneau(
