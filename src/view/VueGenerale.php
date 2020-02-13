@@ -51,9 +51,9 @@ END;
 		$app = \Slim\Slim::getInstance();
 		$urlHome = $app->urlFor('route_home');
 
-    if($urlHome == "/") {
-      $urlHome = "";
-    }
+		if ($urlHome == "/") {
+			$urlHome = "";
+		}
 
 
 		$html = <<<END
@@ -161,13 +161,12 @@ END;
 	public function js()
 	{
 
-
 		$app = \Slim\Slim::getInstance();
 		$urlHome = $app->urlFor('route_home');
 
-    if($urlHome == "/") {
-      $urlHome = "";
-    }
+		if ($urlHome == "/") {
+			$urlHome = "";
+		}
 
 		$html = <<<END
     <!-- Bootstrap core JavaScript-->
