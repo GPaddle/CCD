@@ -1,5 +1,6 @@
 <?php
 namespace GEG\controler;
+
 use GEG\model\Besoin;
 use GEG\view\VueInscriptionBesoin;
 
