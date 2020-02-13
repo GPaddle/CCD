@@ -8,6 +8,7 @@ use GEG\controler\notFoundControler;
 use GEG\view\VueAjouterCreneau;
 use GEG\view\VueGenerale;
 use GEG\controler\ListUserControler;
+use GEG\controler\FormulaireBesoinControler;
 
 
 $db = new DB();
@@ -57,9 +58,20 @@ $app->get("/FormulaireAjouterCreneau", function() {
 	$a->afficher()
 });
 
+
 $app->post("/newCreneau", function() {
 	$a = new CreaneauControleur($_POST['Jour'],$_POST['Semaine'],$_POST['HeureD'],$_POST['HeureF']);
 	$a->SaveCreneau();
+
+$app->get("/FormulaireAjoutBesoin", function() {
+    $a = new FormulaireBesoinControler();
+    $a->afficher();
+})->name('route_formulaireajoutbesoin');
+
+$app->get("/ajouterBesoin", function() {
+    $controller = new AjouterBesoinControlleur();
+    $controller->renderForm();
+
 })
 
 $app->run();
