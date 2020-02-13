@@ -1,9 +1,13 @@
 <?php
 	namespace GEG\controler;
 
+	use GEG\view\VueFormulaireBesoin;
+
 	class AjouterBesoinControler {
-		public function renderForm() {
-			$vue = new VueFormulaireBesoin();
+		public function renderForm($idCreneau) {
+			$roles = Role::select("label")->get();
+
+			$vue = new VueFormulaireBesoin($idCreneau, $roles);
 			$vue->render();
 		}
 
