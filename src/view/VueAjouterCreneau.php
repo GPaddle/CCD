@@ -15,14 +15,16 @@ class VueAjouterCreneau
 					<span>Semaine du cycle :</span>
 				</label>
 			<select id='Semaine' name='Semaine'>
-				<option value='A'>Semaine 1</option>
-				<option value='B'>Semaine 2</option>
-				<option value='C'>Semaine 3</option>
-						<option value='D'>Semaine 4</option>
+				<option value='1'>Semaine 1</option>
+				<option value='2'>Semaine 2</option>
+				<option value='3'>Semaine 3</option>
+						<option value='4'>Semaine 4</option>
 			  </select>
 					</p>
-			<p>Heure de début : <input type=time name=HeureD step=3600/></p>
-			<p>Heure de fin : <input type=time name=HeureF step=3600/></p>
+			<label>Cycle</label>
+			<input type=number name=cycle min=1>
+			<p>Heure de début : <input type=number min=0 max=23 name=HeureD step=3600/></p>
+			<p>Heure de fin : <input type=number min=0 max=23 name=HeureF step=3600/></p>
 			<p><input type=submit value=OK></p>
 
 			</form>"

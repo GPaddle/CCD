@@ -37,18 +37,18 @@ INSERT INTO user (id, nom) VALUES
 
 create table creneau(
   id int AUTO_INCREMENT,
-  jour varchar(10),
-  mois varchar(10),
-  annee int,
+  jour int,
+  semaine int,
+  cycle int,
   debutHeure int,
   finHeure int,
   primary key(id)
 );
 
-insert into creneau (id, jour, mois, annee, debutHeure, finHeure) VALUES
-  (1, 13, 2, 2020, 14, 17),
-  (2, 14, 2, 2020, 8, 10),
-  (3, 18, 2, 2020, 10, 12);
+insert into creneau (jour, semaine, cycle, debutHeure, finHeure) VALUES
+  (3, 2, 1, 14, 17),
+  (1, 2, 1, 8, 10),
+  (4, 2, 1, 10, 12);
 
 CREATE TABLE besoin(
 	idCreneau int,
