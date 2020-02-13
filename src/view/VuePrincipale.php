@@ -11,8 +11,17 @@ class VuePrincipale
   }
 
 
-	public function render()
+	public function render($isAdmin)
 	{
+    if($isAdmin) {
+      $adminButtons = <<<END
+<a href="ajouterCreneau" class="btn btn-primary">Ajouter un créneau</a>
+<a href="ajouterCreneau" class="btn btn-primary">Inscrire un utilisateur</a>
+END;
+    } else {
+      $adminButtons = "";
+    }
+
 		$vGenerale = new VueGenerale();
     $html = "oui";
     $content ="";
@@ -50,7 +59,7 @@ END;
         <div class="container">
           <div class="text-center w-100">
             <h3 class="text-uppercase mt-2">Créneaux :</h3>
-              <a href="ajouterCreneau" class="btn btn-primary">Ajouter un créneau</a>
+            $adminButtons
           </div>
           <hr>
           $content
