@@ -41,8 +41,8 @@ END;
       $id = $value->id;
 
       $date = calc_date("1970-01-05", $value->semaine, $value->jour, $value->cycle);
-      $style = ($numSemaine != $value->semaine || $numCycle != $value->cycle || $numJour != $value->jour) ? "numSem" . $value->semaine : "";
 
+      $style = ($numSemaine != $value->semaine || $numCycle != $value->cycle || $numJour != $value->jour) ? "numSem" . $value->semaine : "";
       $styleBord = "numSem" . $value->semaine;
 
       $numSemaine = $value->semaine;
