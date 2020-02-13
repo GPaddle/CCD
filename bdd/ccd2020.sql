@@ -35,14 +35,14 @@ INSERT INTO user (id, nom) VALUES
 (12, 'Lois');
 
 
-  create table creneau(
-    id int,
-    jour varchar(10),
-    mois varchar(10),
-    annee int,
-    debutHeure int,
-    finHeure int,
-    primary key(id)
+create table creneau(
+  id int AUTO_INCREMENT,
+  jour varchar(10),
+  mois varchar(10),
+  annee int,
+  debutHeure int,
+  finHeure int,
+  primary key(id)
 );
 
 insert into creneau (id, jour, mois, annee, debutHeure, finHeure) VALUES
