@@ -50,7 +50,7 @@ END;
         <div class="container">
           <div class="text-center w-100">
             <h3 class="text-uppercase mt-2">Créneaux :</h3>
-              <a href="ajouterCreneau/" class="btn btn-primary">Ajouter un créneau</a>
+              <a href="ajouterCreneau" class="btn btn-primary">Ajouter un créneau</a>
           </div>
           <hr>
           $content
