@@ -26,7 +26,7 @@ class HomeControler
 			$urlModif2 = $app->urlFor('inscrire');
 			$urlImg = $app->urlFor('route_home');
 
-			$vGenerale->render("<img style='width:30vh' src='{$urlImg}img/logo.svg'></img><br><a href={$urlModif}>Connexion à la page</a><br><a href={$urlModif2}>S'inscrire à la page</a>");
+			$vGenerale->render("<img class='mx-auto d-block' style='width:50vh' src='{$urlImg}img/logo.svg'></img><br><div class='text-center'><a href={$urlModif} class='btn btn-primary ml-2 mr-2'>Connexion à la page</a><a href={$urlModif2} class='btn btn-primary ml-2 mr-2'>S'inscrire à la page</a></div>");
 		}
 	}
 }

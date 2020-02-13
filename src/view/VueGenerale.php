@@ -24,7 +24,6 @@ class VueGenerale
 		<title>Gestion personnel</title>
 	  
 		<!-- Custom fonts for this template-->
-        <link rel="stylesheet" type="text/css" href="$urlHome/style/style.css">
 		<link href="$urlHome/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link
     href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
@@ -36,6 +35,7 @@ class VueGenerale
 
   <!-- Custom styles for this template-->
   <link href="$urlHome/css/sb-admin-2.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="$urlHome/style/style.css">
 
 
 END;
@@ -105,6 +105,7 @@ END
           <a class="nav-link" href="$urlHome">
 			  <span class="mr-2  d-lg-inline text-gray-600 h3" >Accueil</span>
 			</a>
+				<img class=" logo" src="{$urlHome}img/logo.svg">
           <ul class="navbar-nav ml-auto">
 
             <!-- Nav Item - Search Dropdown (Visible Only XS) -->
