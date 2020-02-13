@@ -46,7 +46,7 @@ class connectionControler
         $mdp2=$app->request()->params('mdp2');
         $mail=$app->request()->params('mail');
         $retour=Authentification::createUser($nom,$mdp,$mdp2,$mail);
-        if ($retour==1&&$retour==2) {
+        if ($retour==1||$retour==2) {
             $app->redirectTo("route_home");
         }else{
             setcookie('err2',serialize("Echec de l'inscription"),time()+10,"./");
