@@ -4,13 +4,12 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 use Illuminate\Database\Capsule\Manager as DB;
 use GEG\controler\connectionControler;
-use GEG\controler\notFoundControler;
 use GEG\view\VueAjouterCreneau;
 use GEG\view\VueGenerale;
 use GEG\controler\ListUserControler;
-use GEG\controler\FormulaireBesoinControler;
 use GEG\controler\testControler;
 use GEG\controler\AjouterBesoinControler;
+use GEG\controler\CreneauControleur;
 
 
 $db = new DB();
@@ -61,15 +60,18 @@ $app->get("/FormulaireAjouterCreneau", function() {
 });
 
 $app->post("/newCreneau", function() {
-	$a = new CreaneauControleur($_POST['Jour'],$_POST['Semaine'],$_POST['HeureD'],$_POST['HeureF']);
+	$a = new CreneauControleur($_POST['Jour'],$_POST['Semaine'],$_POST['HeureD'],$_POST['HeureF']);
 	$a->SaveCreneau();
 });
 
 $app->get("/ajouterBesoin/:idCreneau", function($idCreneau) {
     $controller = new AjouterBesoinControler();
     $controller->renderForm($idCreneau);
+})->name('route_ajouterBesoinform');
+$app->get("/ajoutBesoin/:idCreneau", function($idCreneau) {
+    $controller = new AjouterBesoinControler();
+    $controller->ajouterBesoin($idCreneau);
 });
-
 $app->get ("/test", function() {
 
   $controller = new testControler();
