@@ -9,6 +9,7 @@ use GEG\model\User;
 use GEG\view\VueUtilisateur;
 use GEG\auth\Authentification;
 use GEG\view\VueInscription;
+
 class connectionControler
 {
     public function getUser($id)
@@ -22,15 +23,17 @@ class connectionControler
         $v = new VueUtilisateur();
         $v->render($user);
     }
-    public function seConnecter(){
+    public function seConnecter()
+    {
         $v = new VueConnexion();
         $v->render();
     }
-    public function authentifier(){
-        $app= \Slim\Slim::getInstance();
-        $id=$app->request()->params('id');
-        $mdp=$app->request()->params('mdp');
-        $retour=Authentification::authenticate($id,$mdp);
+    public function authentifier()
+    {
+        $app = \Slim\Slim::getInstance();
+        $id = $app->request()->params('id');
+        $mdp = $app->request()->params('mdp');
+        $retour = Authentification::authenticate($id, $mdp);
         if ($retour) {
             $app->redirectTo("route_home");
         }else{
@@ -39,7 +42,8 @@ class connectionControler
 
         }
     }
-    public function inscrire() {
+    public function inscrire()
+    {
         $app = \Slim\Slim::getInstance();
         $nom=$app->request()->params('nom');
         $mdp=$app->request()->params('mdp');
@@ -53,22 +57,24 @@ class connectionControler
             $app->redirectTo("route_home");
         }
     }
-    public function renderInscription(){
-        $v=new VueInscription();
+    public function renderInscription()
+    {
+        $v = new VueInscription();
         $v->render();
     }
 
-    public function deconnexion(){
-        if(isset($_SESSION['user'])){
+    public function deconnexion()
+    {
+        if (isset($_SESSION['user'])) {
             session_destroy();
         }
         $app = \Slim\Slim::getInstance();
         $app->redirectTo("route_home");
     }
-    public function supprimer($idcompte){
+    public function supprimer($idcompte)
+    {
         User::find($idcompte)->delete();
         $app = \Slim\Slim::getInstance();
         $app->redirectTo("route_home");
-
     }
 }

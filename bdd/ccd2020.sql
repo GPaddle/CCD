@@ -50,9 +50,11 @@ create table creneau(
 );
 
 insert into creneau (jour, semaine, cycle, debutHeure, finHeure) VALUES
-  (3, 2, 1, 14, 17),
-  (1, 2, 1, 8, 10),
-  (4, 2, 1, 10, 12);
+  (3, 2, 1, 10, 12),
+  (3, 2, 1, 18.5, 20),
+  (1, 2, 1, 18.5, 20),
+  (1, 3, 1, 8, 10),
+  (4, 4, 2, 10, 12);
 
 DROP TABLE IF EXISTS `besoin`;
 CREATE TABLE besoin(

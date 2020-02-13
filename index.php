@@ -82,9 +82,11 @@ $app->get("/ajouterBesoin/:idCreneau", function ($idCreneau) {
     $controler->renderForm($idCreneau);
 })->name('route_ajouterBesoinform');
 
-$app->post("/ajouterBesoin/:idCreneau", function ($idCreneau) {
+$app->post("/ajouterBesoin/:idCreneau", function ($idCreneau) use ($app) {
     $controler = new AjouterBesoinControler();
     $controler->ajouterBesoin($idCreneau);
+
+    $app->response->redirect($app->urlFor("route_home"),303);
 })->name('route_ajoutBesoinIdCreneau');
 
 $app->get("/listeBesoin",function(){

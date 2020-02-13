@@ -11,7 +11,8 @@ class VueUtilisateur
 
 		$nom = $user->nom;
 		$mail = $user->mail;
-		$id = $_SESSION['user']['id'];
+		$id = $user->id;
+
 		$app = \Slim\Slim::getInstance();
 		$urlHome = $app->urlFor('route_home');
 
