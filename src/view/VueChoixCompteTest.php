@@ -47,23 +47,34 @@ class VueChoixCompteTest
         $res = <<<END
 <div id="ligne"><a href="{$this->lien($key,$v)}">
 END;
+
         foreach ($v as $val => $val2) {
-            $res = <<<END
-$res
-<div>$val2</div>
+            $res .= <<<END
+                <div>$val2</div>
 END;
         }
+
+
         $res = <<<END
 $res
-</a></div>
+    </a>
+</div>
 END;
         return $res;
     }
+
     private function rechercherColone($tab)
     {
 
         return <<<END
-<div id="ligne"><div>Id</div><div>Nom</div></div>
+        <div id="ligne">
+            <div>
+                Id
+            </div>
+            <div>
+                Nom
+            </div>
+        </div>
 END;
     }
     /**
@@ -72,7 +83,7 @@ END;
     private function lien($key, $v)
     {
         $app = \Slim\Slim::getInstance();
-        $urlModif = $app->urlFor('route_loginTest', ['id' => $v[0]]);
+        $urlModif = $app->urlFor('route_loginTestId', ['id' => $v[0]]);
         return $urlModif;
     }
 
@@ -85,8 +96,10 @@ END;
         $res = $this->rechercherColone($this->tab);
         $tab = $this->convertirFormatTab($this->tab);
         foreach ($tab as $key => $v) {
+            $k = $key+1;
             $res = <<<END
                 $res
+                <img src="/img/$k.jpg"></img>
                 {$this->formatLigne($key,$v)}
 END;
         }
@@ -96,9 +109,7 @@ END;
 
     public function render()
     {
-
-        
-		$vGenerale = new VueGenerale();
+        $vGenerale = new VueGenerale();
         $vGenerale->render($this->afficher());
     }
 }
