@@ -35,7 +35,7 @@ END;
       foreach ($value[1] as $v) {
         $besoins .="<li>$v->label</li>";
       }
-
+    }
 
     $numSemaine = -1;
     $numCycle = -1;
@@ -86,6 +86,7 @@ END;
   </div>
 END;
     }
+
     $html = <<<END
     <section>
     <div class="container">
@@ -104,5 +105,4 @@ END;
 END;
     $vGenerale->render($html);
   }
-}
 }
