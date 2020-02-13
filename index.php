@@ -84,7 +84,7 @@ $app->get("/connexion", function () {
 $app->post("/connexion", function () {
     $controler = new connectionControler();
     $controler->authentifier();
-})->name('connexion2');
+});
 
 $app->get("/listeBesoin",function(){
     $controler=new ListBesoinControleur();
@@ -102,5 +102,10 @@ $app->post("/inscriptionBesoin", function() {
   $controler = new InscriptionBesoinControleur();
   $controler->renderForm($idCreneau);
 })
+
+$app->post("/supUser",function (){
+    $c=new connectionControler();
+    $c->supprimer($_SESSION['id']);
+});
 
 $app->run();
