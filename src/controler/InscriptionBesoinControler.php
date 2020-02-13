@@ -16,6 +16,8 @@ class InscriptionBesoinControler{
     $besoinInscr->idBesoin = $idBesoin;
 
     $besoinInscr->save();
+    $app= \Slim\Slim::getInstance();
+    $app->redirectTo("route_home");
   }
 
 
