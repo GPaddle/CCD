@@ -5,6 +5,9 @@ require_once __DIR__ . '/vendor/autoload.php';
 use Illuminate\Database\Capsule\Manager as DB;
 use GEG\controler\connectionControler;
 use GEG\controler\notFoundControler;
+use GEG\view\VueAjouterCreneau;
+use GEG\view\VueGenerale;
+
 use GEG\controler\ListUserControler;
 use GEG\view\VueAjouterCreneau;
 
@@ -19,16 +22,27 @@ $app = new \Slim\Slim;
 
 session_start();
 
-$app->get("/loginTest", function() {
-	echo "future page de choix des utilisateurs";
-});
+
+$app->get("/ajoutCreneau", function () {
+    $v = new VueAjouterCreneau();
+    $v->render();
+})->name('route_ajoutCreneau');
+
+$app->get("/loginTest", function () {
+
+    $vGenerale = new VueGenerale();
+    
+    $vGenerale->render("future page de choix des utilisateurs");
+
+
+})->name('route_loginTest');
 
 //Affichage de toutes les listes
 
 $app->get('/loginTest/:id', function ($id) {
     $c = new connectionControler();
     $c->getUser($id);
-})->name('route_loginTest');
+})->name('route_loginTestId');
 
 $app->get('/listeUser', function () {
     $c = new ListUserControler();
@@ -36,7 +50,8 @@ $app->get('/listeUser', function () {
 })->name('route_listeUser');
 
 $app->get('/', function () {
-    echo "HOME";
+    $vGenerale = new VueGenerale();
+    $vGenerale->render("HOME");
 })->name('route_home');
 
 $app->get("/FormulaireAjouterCreneau", function() {
