@@ -8,80 +8,57 @@ class VuePrincipaleTest
 
   public function __construct($tab){
     $this->t = $tab;
-    printf($this->t);
   }
 
 
 	public function render()
 	{
-
-    
 		$vGenerale = new VueGenerale();
-		$vGenerale->render(
-			"
-      <style>
-      .semaine{
-        border : solid 2px black;
-        height : 500px;
-        display : flex;
-        flex-direction ; row;
-        margin-bottom : 10px;
-      }
+    $html = "oui";
+    $content ="";
+    foreach ($this->t as $value) {
+      $id = $value->id;
 
-      .jour{
-        border : solid 1px black;
-        background-color : grey;
-        width : 1000px;
-        text-align : center;
-      }
+      $content .= <<<END
+  <div id="crenau-1">
+    <span>$value->debutHeure -> $value->finHeure | $value->jour | $value->semaine | $value->cycle</span>
+    <button type="button" class="float-right btn btn-danger" data-target="#creneau1" data-toggle="modal">Modifier</button>
+    <hr>
+  </div>
 
-      .jour p{
-        border-bottom : solid 2px black;
-        margin-top : 0px;
-      }
-
-      </style>
-
-      <div id='content'>
-      <div id='A' class='semaine'>
-        <div class='jour'><p>L</p></div>
-        <div class='jour'><p>M</p></div>
-        <div class='jour'><p>M</p></div>
-        <div class='jour'><p>J</p></div>
-        <div class='jour'><p>V</p></div>
-        <div class='jour'><p>S</p></div>
-        <div class='jour'><p>D</p></div>
+  <div class="modal fade" id="creneau$id" tabindex="-1" role="dialog" aria-labelledby="creneauLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="creneauLabel">Modifier créneau du $value->debutHeure -> $value->finHeure | $value->jour | $value->semaine | $value->cycle</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <a href="/ajouterBesoin" class="btn btn-success">Ajouter un besoin</a>
+        </div>
       </div>
-      <div id='B' class='semaine'>
-        <div class='jour'><p>L</p></div>
-        <div class='jour'><p>M</p></div>
-        <div class='jour'><p>M</p></div>
-        <div class='jour'><p>J</p></div>
-        <div class='jour'><p>V</p></div>
-        <div class='jour'><p>S</p></div>
-        <div class='jour'><p>D</p></div>
+    </div>
+  </div>
+END;
+    }
+    $html = <<<END
+    <section>
+    <div class="container">
+      <div class="row mt-5 shadow-sm " style="height: 100%; background-color: rgba(242,242,242,.8);">
+        <div class="container">
+          <div class="text-center w-100">
+            <h3 class="text-uppercase mt-2">Créneaux :</h3>
+              <a href="ajouterCreneau/" class="btn btn-primary">Ajouter un créneau</a>
+          </div>
+          <hr>
+          $content
+        </div>
       </div>
-      <div id='C' class='semaine'>
-        <div class='jour'><p>L</p></div>
-        <div class='jour'><p>M</p></div>
-        <div class='jour'><p>M</p></div>
-        <div class='jour'><p>J</p></div>
-        <div class='jour'><p>V</p></div>
-        <div class='jour'><p>S</p></div>
-        <div class='jour'><p>D</p></div>
-      </div>
-      <div id='D' class='semaine'>
-        <div class='jour'><p>L</p></div>
-        <div class='jour'><p>M</p></div>
-        <div class='jour'><p>M</p></div>
-        <div class='jour'><p>J</p></div>
-        <div class='jour'><p>V</p></div>
-        <div class='jour'><p>S</p></div>
-        <div class='jour'><p>D</p></div>
-      </div>
-
-
-      </div>"
-		);
+    </div>
+  </section>
+END;
+		$vGenerale->render($html);
 	}
 }
