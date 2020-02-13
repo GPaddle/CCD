@@ -33,7 +33,7 @@ $app->get('/loginTest/:id', function ($id) {
 $app->get('/deconnexion', function () use ($app){
     $c = new connectionControler();
     $c->deconnexion();
-    $app->response->redirect($app->urlFor('route_listeUser'),303);
+    $app->response->redirect($app->urlFor('route_home'),303);
 })->name('route_deconnexion');
 
 $app->get('/listeUser', function () {
@@ -80,6 +80,7 @@ $app->get("/connexion", function () {
     $controler = new connectionControler();
     $controler->seConnecter();
 })->name('connexion');
+
 $app->post("/connexion", function () {
     $controler = new connectionControler();
     $controler->authentifier();
