@@ -43,6 +43,10 @@ END;
 		$app = \Slim\Slim::getInstance();
 		$urlHome = $app->urlFor('route_home');
 
+    if($urlHome == "/") {
+      $urlHome = "";
+    }
+
 
 		$html = <<<END
 		<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
@@ -153,6 +157,9 @@ END;
 		$app = \Slim\Slim::getInstance();
 		$urlHome = $app->urlFor('route_home');
 
+    if($urlHome == "/") {
+      $urlHome = "";
+    }
 
 		$html = <<<END
     <!-- Bootstrap core JavaScript-->
@@ -164,9 +171,6 @@ END;
 
   <!-- Custom scripts for all pages-->
   <!--script src="$urlHome/js/sb-admin-2.min.js"></script-->
-
-  <!-- Page level plugins -->
-  <script src="$urlHome/vendor/chart.js/Chart.min.js"></script>
 
   <!-- Page level custom scripts -->
   <!--script src="$urlHome/js/demo/chart-area-demo.js"></script>

@@ -46,7 +46,7 @@ class VueChoixCompteTest
     {
         $key+=1;
         $res = <<<END
-<div id="ligne"><a href="loginTest/$key">
+<div class="ligne"><a href="loginTest/$key">
 END;
 
         foreach ($v as $val => $val2) {
@@ -86,8 +86,11 @@ END;
         $app = \Slim\Slim::getInstance();
         $urlHome = $app->urlFor('route_home');
 
-        $res="<div class='flex'>";
+        if($urlHome == "/") {
+            $urlHome = "";
+        }
 
+        $res="<div class='flex'>";
         $tab = $this->convertirFormatTab($this->tab);
         foreach ($tab as $key => $v) {
             $k = $key+1;
