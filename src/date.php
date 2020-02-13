@@ -18,16 +18,15 @@ function calc_date($ancre, $semaine, $jour, $cycle = 0)
     if ((gettype($cycle) !== 'integer') || ($cycle < 0))
         throw new \Exception('calc_date : mauvais numéro de cycle');
 
-    if ((gettype($semaine) !== 'string') || (strlen($semaine) != 1) ||
-        (ord($semaine) - ord('A') < 0) || (ord($semaine) - ord('A') > 3))
-        throw new \Exception('calc_date : le n° de semaine doit être entre A et D (inclus)');
+    if (gettype($semaine) !== 'integer' || $semaine < 1 || $semaine > 4)
+        throw new \Exception('calc_date : le n° de semaine doit être entre 1 et 4 (inclus)');
 
     if ((gettype($jour) !== 'integer') || ($jour < 1) || ($jour > 7))
         throw new \Exception('calc_date : le n° de jour doit être entre 1 et 7 (inclus)');
 
     // On calcule le jour recherché (décalage entier par rapport
     // à la date de départ -- « l'ancre »)
-    $nb_jours = $cycle * 28 + (ord($semaine) - ord('A')) * 7 + $jour - 1;
+    $nb_jours = $cycle * 28 + ($semaine - 1) * 7 + $jour - 1;
     $date_init = new \DateTime($ancre);
     $date_res = $date_init->add(new \DateInterval('P' . $nb_jours . 'D'))->format('U');
 

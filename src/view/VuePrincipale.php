@@ -1,6 +1,9 @@
 <?php
 
 namespace GEG\view;
+
+require_once "src/date.php";
+
 class VuePrincipale
 {
 
@@ -28,9 +31,11 @@ END;
     foreach ($this->t as $value) {
       $id = $value->id;
 
+      $date = calc_date("1970-01-05", $value->semaine, $value->jour, $value->cycle);
+
       $content .= <<<END
   <div id="crenau-1">
-    <span>{$value->debutHeure}h à {$value->finHeure}h | Jour : $value->jour | Semaine : $value->semaine | Cycle : $value->cycle</span>
+    <span>$date->jour_nom $date->jour_no $date->mois_nom $date->annee_no de {$value->debutHeure}h à {$value->finHeure}h</span>
     <button type="button" class="float-right btn btn-danger" data-target="#creneau$id" data-toggle="modal">Modifier</button>
     <hr>
   </div>
