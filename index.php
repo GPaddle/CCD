@@ -101,7 +101,7 @@ $app->get("/inscriptionBesoin/:idCreneau", function() {
 
 $app->post("/inscriptionBesoin", function() {
   $controler = new InscriptionBesoinControleur();
-  $controler->renderForm($idCreneau);
+  $controler->ajouterBesoinInscription();
 });
 
 $app->post("/supUser",function (){
