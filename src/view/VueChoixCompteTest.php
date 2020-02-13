@@ -27,6 +27,15 @@ class VueChoixCompteTest
      * @return mixed le tableau
      */
     private function convertirFormat($tab){
+        $res=array();
+        $it=0;
+        foreach ($tab as $key ){
+            $res[]+=array();
+            foreach ($key as $libelle => $v ){
+                $res[$key];
+            }
+            $it++;
+        }
         return $tab; // Au cas où le tableau reçu serait incompatible à la vue faite
     }
 
