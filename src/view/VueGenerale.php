@@ -14,15 +14,15 @@ class VueGenerale
 		}
 
 		$html = <<<END
-		
+
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<meta name="description" content="">
 		<meta name="author" content="">
-	  
+
 		<title>Gestion personnel</title>
-	  
+
 		<!-- Custom fonts for this template-->
 		<link href="$urlHome/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link
@@ -56,7 +56,7 @@ END;
         $urlDeInscrire = $app->urlFor('supCompte');
 		//		if (isset($_SESSION['user'])) {
 		$usrSection = `
-		
+
             `;
 		//		}
 
@@ -103,7 +103,7 @@ END
             <i class="fa fa-bars"></i>
           </button>
 
-          
+
 
           <!-- Topbar Navbar -->
           <a class="nav-link" href="$urlHome">
@@ -136,8 +136,8 @@ END
             </li>
 
 			<li class="nav-item ">
-			
-			
+
+
 		  </li>
 
 		  $siCo
@@ -181,14 +181,14 @@ END;
 	function footer()
 	{
 		$html = <<<END
-		
+
 		<footer class="sticky-footer bg-white">
 		<div class="container my-auto">
 		  <div class="copyright text-center my-auto">
 			<span id="date"></span>
 		  </div>
 		</div>
-		
+
 		<script>
 		let txt="Copyright &copy; Blop@IUTNC2019-2020 : "
 		txt+=new Date(Date.now()).getYear()+1900;
@@ -214,7 +214,7 @@ END;
 		$header
 		<body>
 			$navBarre
-			<section class="content">
+			<section class="content h-100">
 				$html
 			</section>
 			$footer

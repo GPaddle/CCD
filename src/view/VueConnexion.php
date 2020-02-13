@@ -29,13 +29,13 @@ class VueConnexion
 								 	<div class="input-group-prepend">
 								    	<span class="input-group-text" id="basic-addon1">Identifiant</span>
 								  	</div>
-								  	<input type="text" class="form-control" placeholder="Identifiant" name="id"
+								  	<input type="text" class="form-control" placeholder="Identifiant" name="id">
 								</div>
 								<div class="input-group mb-3">
 								 	<div class="input-group-prepend">
 								    	<span class="input-group-text" id="basic-addon1">Mot de passe</span>
 								  	</div>
-								  	<input type="password" class="form-control" placeholder="Mot de passe" name="id"
+								  	<input type="password" class="form-control" placeholder="Mot de passe" name="id">
 								</div>
 							</div>
 							<div class='text-center mx-auto'>

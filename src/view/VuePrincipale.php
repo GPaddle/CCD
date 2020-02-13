@@ -44,7 +44,7 @@ END;
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="creneauLabel">Modifier créneau de {$value->debutHeure}h à {$value->finHeure}h | Jour : $value->jour | Semaine : $value->semaine | Cycle : $value->cycle</h5>
+          <h5 class="modal-title" id="creneauLabel">Modifier créneau du $date->jour_nom $date->jour_no $date->mois_nom $date->annee_no de {$value->debutHeure}h à {$value->finHeure}h</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
