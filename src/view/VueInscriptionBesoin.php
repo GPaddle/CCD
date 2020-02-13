@@ -1,8 +1,5 @@
 <?php
 
-<?php
-
-
 namespace GEG\view;
 
 /**
