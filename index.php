@@ -10,6 +10,7 @@ use GEG\view\VueGenerale;
 
 use GEG\controler\ListUserControler;
 
+
 $db = new DB();
 $db->addConnection(parse_ini_file("src/conf/conf.ini"));
 
