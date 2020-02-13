@@ -53,8 +53,13 @@ $app->get('/', function () {
 })->name('route_home');
 
 $app->get("/FormulaireAjouterCreneau", function() {
-	$a = new VueAjouterCreneau();
-	$a->render();
+	$a = new CreneauControleur();
+	$a->afficher()
 });
+
+$app->post("/newCreneau", function() {
+	$a = new CreaneauControleur($_POST['Jour'],$_POST['Semaine'],$_POST['HeureD'],$_POST['HeureF']);
+	$a->SaveCreneau();
+})
 
 $app->run();

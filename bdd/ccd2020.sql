@@ -34,16 +34,15 @@ INSERT INTO user (id, nom) VALUES
 (11, 'Ariane'),
 (12, 'Lois');
 
-CREATE TABLE creneau(
-	id int,
 
-	debutSemaine int,
-	debutJour int,
-	debutHeure int,
-
-	finSemaine int,
-	finJour int,
-	finHeure int
+  create table creneau(
+    id int,
+    jour varchar(10),
+    mois varchar(10),
+    annee int(),
+    debutHeure time(),
+    finHeure time(),
+    primary key(id)
 );
 
 CREATE TABLE besoin(
