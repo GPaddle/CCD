@@ -1,0 +1,25 @@
+<?php
+
+namespace GEG\model;
+
+class Item extends \Illuminate\Database\Eloquent\Model
+{
+    protected $table = 'table';
+    protected $primaryKey = 'id';
+    public $timestamps = false;
+
+    public function liste()    {
+        return $this->belongsTo('GEG\model\Liste', 'liste_id');
+    }
+
+    public function participe()
+    {
+        return $this->belongsTo('GEG\model\User', 'user_id');
+    }
+
+    public function __toString()
+    {
+        $str = "";
+        return $str;
+    }
+}
