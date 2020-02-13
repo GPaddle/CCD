@@ -75,7 +75,7 @@ $app->get("/ajouterBesoin/:idCreneau", function ($idCreneau) {
     $controler->renderForm($idCreneau);
 })->name('route_ajouterBesoinform');
 
-$app->post("/ajoutBesoin/:idCreneau", function ($idCreneau) {
+$app->post("/ajouterBesoin/:idCreneau", function ($idCreneau) {
     $controler = new AjouterBesoinControler();
     $controler->ajouterBesoin($idCreneau);
 })->name('route_ajoutBesoinIdCreneau');
