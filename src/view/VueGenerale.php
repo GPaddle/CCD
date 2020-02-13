@@ -6,10 +6,12 @@ class VueGenerale
 {
 	function header()
 	{
-
 		$app = \Slim\Slim::getInstance();
 		$urlHome = $app->urlFor('route_home');
 
+		if($urlHome == "/") {
+			$urlHome = "";
+		}
 
 		$html = <<<END
 		
