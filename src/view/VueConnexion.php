@@ -19,14 +19,32 @@ class VueConnexion
 				<title>Connexion</title>
 			</head>
 			<body>
-				<h1>Connexion</h1>
-				<form method="post" action="seCo">
-					<label>Identifiant</label>
-					<input type="text" name="id">
-					<label>Mot de passe</label>
-					<input type="password" name="mdp" >
-					<input type="submit" value="Valider">
-				</form>
+					<h1 class='text-center'>Connexion</h1>
+					<div class='container'>
+					<div class='row '>
+					<div class='mx-auto'>
+						<form method="post" action="seCo" class='text-center'>
+							<div class='text-center'>
+								<div class="input-group mb-3">
+								 	<div class="input-group-prepend">
+								    	<span class="input-group-text" id="basic-addon1">Identifiant</span>
+								  	</div>
+								  	<input type="text" class="form-control" placeholder="Identifiant" name="id"
+								</div>
+								<div class="input-group mb-3">
+								 	<div class="input-group-prepend">
+								    	<span class="input-group-text" id="basic-addon1">Mot de passe</span>
+								  	</div>
+								  	<input type="password" class="form-control" placeholder="Mot de passe" name="id"
+								</div>
+							</div>
+							<div class='text-center mx-auto'>
+								<input type="submit" value="Valider" class='btn btn-primary '>
+							</div>
+						</form>
+					</div>
+					</div>
+					</div>
 			</body>
 		</html>
 END;
