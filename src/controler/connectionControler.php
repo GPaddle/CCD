@@ -25,4 +25,10 @@ class connectionControler
         $v = new VueConnexion();
         $v->render();
     }
+
+    public function deconnexion(){
+        if(isset($_SESSION['user'])){
+            session_unset();
+        }
+    }
 }

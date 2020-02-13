@@ -42,6 +42,12 @@ $app->get('/loginTest/:id', function ($id) {
     $c->getUser($id);
 })->name('route_loginTestId');
 
+$app->get('/deconnexion', function () use ($app){
+    $c = new connectionControler();
+    $c->deconnexion();
+    $app->response->redirect($app->urlFor('route_listeUser'),303);
+})->name('route_deconnexion');
+
 $app->get('/listeUser', function () {
     $c = new ListUserControler();
     $c->getAllUser();
@@ -75,7 +81,6 @@ $app->post("/ajoutBesoin/:idCreneau", function ($idCreneau) {
 })->name('route_ajoutBesoinIdCreneau');
 
 $app->get("/test", function () {
-
     $controler = new testControler();
     $controler->afficher();
 })->name('route_test');
