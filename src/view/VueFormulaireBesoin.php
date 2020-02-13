@@ -19,26 +19,14 @@ class VueFormulaireBesoin
         $this->role=$role;
     }
 
-    /**
-     * @return array Liste de besoin
-     */
-    private function getBesoin(){
-        $v=$this->role;
-        $res=array();
-        foreach ($v as $key => $val){
-            $res[]=$val->label;
-        }
-        return $res;
-    }
     private function afficherChoixBesoins(){
-        $besoin=$this->getBesoin();
         $html=<<<END
-    <select name="type">
+    <select name="idRole">
         <option>Sélectionner un rôle</option>
 END;
-        foreach ($besoin as $key => $besoin) {
+        foreach ($this->role as $role) {
             $html .= <<<END
-<option value="$key">$besoin</option>
+<option value="{$role->id}">{$role->label}</option>
 
 END;
         }
@@ -54,7 +42,7 @@ END;
      */
     private function afficher(){
         return <<<END
-<form action="ajoutBesoin/{$this->idCreneaux}" method="post" >
+<form action="{$this->idCreneaux}" method="post" >
 {$this->afficherChoixBesoins()}
 <input type="int" name="qte" value="0" class="input_nbr" />
 <input type="submit" value="Valider"  />
