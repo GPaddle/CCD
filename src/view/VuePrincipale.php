@@ -1,7 +1,7 @@
 <?php
 
 namespace GEG\view;
-class VuePrincipaleTest
+class VuePrincipale
 {
 
   private $t;

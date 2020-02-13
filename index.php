@@ -7,7 +7,7 @@ use GEG\controler\connectionControler;
 use GEG\view\VueAjouterCreneau;
 use GEG\view\VueGenerale;
 use GEG\controler\ListUserControler;
-use GEG\controler\testControler;
+use GEG\controler\PrincipaleControler;
 use GEG\controler\AjouterBesoinControler;
 use GEG\controler\CreneauControleur;
 use GEG\controler\ListBesoinControleur;
@@ -65,9 +65,10 @@ $app->get("/ajouterCreneau", function () {
     $a->afficher();
 })->name('route_ajoutCreneau_get');
 
-$app->post("/ajouterCreneau", function () {
+$app->post("/ajouterCreneau", function () use($app) {
     $a = new CreneauControleur();
     $a->SaveCreneau();
+    $app->response->redirect($app->urlFor('route_accueil'),303);
 })->name('route_ajoutCreneau_post');
 
 $app->get("/ajouterBesoin/:idCreneau", function ($idCreneau) {
@@ -80,10 +81,10 @@ $app->post("/ajouterBesoin/:idCreneau", function ($idCreneau) {
     $controler->ajouterBesoin($idCreneau);
 })->name('route_ajoutBesoinIdCreneau');
 
-$app->get("/test", function () {
-    $controler = new testControler();
+$app->get("/home", function () {
+    $controler = new PrincipaleControler();
     $controler->afficher();
-})->name('route_test');
+})->name('route_accueil');
 
 $app->get("/connexion", function () {
     $controler = new connectionControler();
