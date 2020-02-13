@@ -86,8 +86,11 @@ END;
         $app = \Slim\Slim::getInstance();
         $urlHome = $app->urlFor('route_home');
 
-        $res="<div class='flex'>";
+        if($urlHome == "/") {
+            $urlHome = "";
+        }
 
+        $res="<div class='flex'>";
         $tab = $this->convertirFormatTab($this->tab);
         foreach ($tab as $key => $v) {
             $k = $key+1;
