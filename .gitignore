@@ -5,3 +5,5 @@ composer.lock
 idées/
 local/
 srcWebEtu/
+
+composer.json
