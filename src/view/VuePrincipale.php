@@ -9,14 +9,15 @@ class VuePrincipale
 
   private $t;
 
-  public function __construct($tab){
+  public function __construct($tab)
+  {
     $this->t = $tab;
   }
 
 
-	public function render($isAdmin)
-	{
-    if($isAdmin) {
+  public function render($isAdmin)
+  {
+    if ($isAdmin) {
       $adminButtons = <<<END
 <a href="ajouterCreneau" class="btn btn-primary">Ajouter un créneau</a>
 <a href="ajouterCreneau" class="btn btn-primary">Inscrire un utilisateur</a>
@@ -25,19 +26,36 @@ END;
       $adminButtons = "";
     }
 
-		$vGenerale = new VueGenerale();
-    $html = "oui";
-    $content ="";
+    $vGenerale = new VueGenerale();
+    $html = "";
+    $content = "";
+
+
+    $numSemaine = -1;
+    $numCycle = -1;
+    $numJour = -1;
+
     foreach ($this->t as $value) {
+
+
       $id = $value->id;
 
       $date = calc_date("1970-01-05", $value->semaine, $value->jour, $value->cycle);
 
+      $style = ($numSemaine != $value->semaine || $numCycle != $value->cycle || $numJour != $value->jour) ? "numSem" . $value->semaine : "";
+
+      $numSemaine = $value->semaine;
+      $numCycle = $value->cycle;
+      $numJour = $value->jour;
+
+      $styleBord = "numSem" . $value->semaine;
+
+
       $content .= <<<END
-  <div id="crenau-1">
-    <span>$date->jour_nom $date->jour_no $date->mois_nom $date->annee_no de {$value->debutHeure}h à {$value->finHeure}h</span>
+  <div class ="$styleBord" id="crenau-$id">
+    <span class="pl-4">$date->jour_nom $date->jour_no $date->mois_nom $date->annee_no de {$value->debutHeure}h à {$value->finHeure}h</span>
     <button type="button" class="float-right btn btn-danger" data-target="#creneau$id" data-toggle="modal">Modifier</button>
-    <hr>
+    <hr class="$style">
   </div>
 
   <div class="modal fade" id="creneau$id" tabindex="-1" role="dialog" aria-labelledby="creneauLabel" aria-hidden="true">
@@ -73,6 +91,6 @@ END;
     </div>
   </section>
 END;
-		$vGenerale->render($html);
-	}
+    $vGenerale->render($html);
+  }
 }
