@@ -13,8 +13,6 @@ class PrincipaleControler
 {
     public function afficher()
     {
-      $t = Creneau::orderBy("cycle")->orderBy("semaine")->orderBy("jour")->orderBy("debutHeure")->get();
-      $v = new VuePrincipale($t);
-      $v->render();
+      
     }
 }
