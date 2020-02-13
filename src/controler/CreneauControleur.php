@@ -6,7 +6,9 @@ use \Illuminate\Database\Capsule\Manager as DB;
 use GEG\model\User;
 use GEG\view\VueHome;
 use GEG\view\VueAjouterCreneau;
-use GEG\date;
+use GEG\model\Creneau;
+
+require_once "src/date.php";
 
 class CreneauControleur
 {
@@ -15,15 +17,14 @@ class CreneauControleur
   	$a->render();
   }
 
-  public function SaveCreneau($jour,$semaine,$heureD,$heureF){
+  public function SaveCreneau(){
     $c = new Creneau();
-    $d = new Date();
-    $res = $d->calc_date('2010-02-10',$semaine,$jour);
+    $res = calc_date('2010-02-10',$_POST['Semaine'],$_POST['Jour']);
     $c->jour =$res['jour_nom'];
     $c->mois =$res['mois_nom'];
     $c->annee =$res['annee_no'];
-    $c->debutHeure = $heureD;
-    $c->finHeure = $heureF;
+    $c->debutHeure = $_POST['HeureD'];
+    $c->finHeure = $_POST['HeureF'];
     $c->save();
 
   }
