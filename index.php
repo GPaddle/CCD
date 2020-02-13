@@ -17,6 +17,10 @@ $app = new \Slim\Slim();
 
 session_start();
 
+$app->get("/loginTest", function() {
+	echo "future page de choix des utilisateurs"
+})
+
 //Affichage de toutes les listes
 
 $app->get('/loginTest/:id', function ($id) {
