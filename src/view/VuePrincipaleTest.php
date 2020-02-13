@@ -36,7 +36,7 @@ class VuePrincipaleTest
           </button>
         </div>
         <div class="modal-body">
-          <a href="/ajouterBesoin" class="btn btn-success">Ajouter un besoin</a>
+          <a href="ajouterBesoin/$id" class="btn btn-success">Ajouter un besoin</a>
         </div>
       </div>
     </div>
