@@ -51,7 +51,7 @@ $app->get("/inscrire",function (){
     $c->renderInscription();
 })->name("inscrire");
 
-$app->get("/inscription",function (){
+$app->post("/inscrire",function (){
     $c=new connectionControler();
     $c->inscrire();
 });
