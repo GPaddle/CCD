@@ -22,18 +22,10 @@ $app = new \Slim\Slim;
 
 session_start();
 
-
 $app->get("/ajoutCreneau", function () {
     $v = new VueAjouterCreneau();
     $v->render();
 })->name('route_ajoutCreneau');
-
-$app->get("/loginTest", function () {
-
-    $vGenerale = new VueGenerale();
-
-    $vGenerale->render("future page de choix des utilisateurs");
-})->name('route_loginTest');
 
 //Affichage de toutes les listes
 
