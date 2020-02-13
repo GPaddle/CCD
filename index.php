@@ -41,9 +41,9 @@ $app->get('/listeUser', function () {
     $c->getAllUser();
 })->name('route_listeUser');
 
-$app->get('/', function () use ($app) {
+$app->get('/', function () {
     $controller = new HomeControler();
-    $controller->render($app);
+    $controller->render();
 })->name('route_home');
 
 $app->get("/inscrire",function (){
@@ -86,9 +86,5 @@ $app->get("/listeBesoin",function(){
     $controler=new ListBesoinControleur();
     $controler->render();
 });
-
-$app->post("/seCo",function (){
-
-})->name('route_listeBesoin');
 
 $app->run();
