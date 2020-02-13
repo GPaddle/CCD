@@ -87,4 +87,14 @@ $app->get("/listeBesoin",function(){
     $controler->render();
 });
 
+$app->get("/inscriptionBesoin", function() {
+  $controler = new InscriptionBesoinControleur();
+  $controler->renderForm($idCreneau);
+})
+
+$app->post("/inscriptionBesoin", function() {
+  $controler = new InscriptionBesoinControleur();
+  $controler->renderForm($idCreneau);
+})
+
 $app->run();
