@@ -65,9 +65,9 @@ $app->post("/newCreneau", function() {
 	$a->SaveCreneau();
 });
 
-$app->get("/ajouterBesoin", function() {
+$app->get("/ajouterBesoin/:idCreneau", function($idCreneau) {
     $controller = new AjouterBesoinControler();
-    $controller->renderForm();
+    $controller->renderForm($idCreneau);
 });
 
 $app->get ("/test", function() {

@@ -1,5 +1,5 @@
 <?php
-
+namespace src\
 // Changement de locale pour être en français
 if (!setlocale(LC_TIME, 'fr_FR.utf8', 'fr_FR', 'fr'))
     throw new Exception ('Français introuvable : corriger ou commenter cette ligne (pour la langue par défaut)');
@@ -18,7 +18,7 @@ function calc_date($ancre, $semaine, $jour, $cycle = 0)
     // On vérifie les paramètres...
     if ((gettype($cycle) !== 'integer') || ($cycle < 0))
         throw new Exception('calc_date : mauvais numéro de cycle');
-    
+
     if ((gettype($semaine) !== 'string') || (strlen($semaine) != 1) ||
         (ord($semaine) - ord('A') < 0) || (ord($semaine) - ord('A') > 3))
         throw new Exception('calc_date : le n° de semaine doit être entre A et D (inclus)');
@@ -34,7 +34,7 @@ function calc_date($ancre, $semaine, $jour, $cycle = 0)
 
     // Attention, distinguo Windows/reste du monde (Windows, WinNT, Win32)
     $format_jour_no = (preg_match('#win[dn3]#', PHP_OS))? '%#d' : '%e';
-                
+
     // Génération du résultat
     return (object) [
         'jour_no' => strftime($format_jour_no, $date_res),
