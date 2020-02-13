@@ -44,12 +44,12 @@ END;
     foreach ($this->t as $value) {
 
 
-      $id = $value->id;
+      $id = $value[0]->id;
 
       $date = calc_date("1970-01-05", $value[0]->semaine, $value[0]->jour, $value[0]->cycle);
 
       $style = ($numSemaine != $value[0]->semaine || $numCycle != $value[0]->cycle || $numJour != $value[0]->jour) ? "numSem" . $value[0]->semaine : "";
-      $styleBord = "numSem" . $value->semaine;
+      $styleBord = "numSem" . $value[0]->semaine;
 
       $numSemaine = $value[0]->semaine;
       $numCycle = $value[0]->cycle;
