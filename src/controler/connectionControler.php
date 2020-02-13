@@ -44,4 +44,10 @@ class connectionControler
         $v=new VueInscription();
         $v->render();
     }
+
+    public function deconnexion(){
+        if(isset($_SESSION['user'])){
+            session_unset();
+        }
+    }
 }

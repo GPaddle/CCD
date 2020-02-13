@@ -9,11 +9,11 @@ use GEG\model\Creneau;
 use GEG\view\VuePrincipaleTest;
 
 
-class testControler
+class PrincipaleControler
 {
     public function afficher()
     {
-      $t = Creneau::all();
+      $t = Creneau::orderBy("cycle")->orderBy("semaine")->orderBy("jour")->orderBy("debutHeure")->get();
       $v = new VuePrincipaleTest($t);
       $v->render();
     }

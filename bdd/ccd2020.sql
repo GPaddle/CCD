@@ -1,6 +1,8 @@
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
+
+DROP TABLE IF EXISTS `role`;
 CREATE TABLE role (
   id int(11) NOT NULL,
   label varchar(128) NOT NULL
@@ -14,6 +16,7 @@ INSERT INTO role (id, label) VALUES
 (5, 'Chargé d\'accueil titulaire'),
 (6, 'Chargé d\'accueil assistant');
 
+DROP TABLE IF EXISTS `user`;
 CREATE TABLE user (
   id int(11) NOT NULL,
   nom varchar(30) CHARACTER SET utf8 NOT NULL,
@@ -35,6 +38,7 @@ INSERT INTO user (id, nom) VALUES
 (12, 'Lois');
 
 
+DROP TABLE IF EXISTS `creneau`;
 create table creneau(
   id int AUTO_INCREMENT,
   jour int,
@@ -50,10 +54,13 @@ insert into creneau (jour, semaine, cycle, debutHeure, finHeure) VALUES
   (1, 2, 1, 8, 10),
   (4, 2, 1, 10, 12);
 
+DROP TABLE IF EXISTS `besoin`;
 CREATE TABLE besoin(
+  id int AUTO_INCREMENT,
 	idCreneau int,
 	idRole int,
-	qte int
+	qte int,
+  PRIMARY KEY (id)
 );
 
 ALTER TABLE role

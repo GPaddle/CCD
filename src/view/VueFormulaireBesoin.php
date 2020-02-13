@@ -43,7 +43,11 @@ END;
     private function afficher(){
         return <<<END
 <form action="{$this->idCreneaux}" method="post" >
+<label for='idRole'>
+<span>Choix du role a ajouter :</span>
+</label>
 {$this->afficherChoixBesoins()}
+<label>Nombre de personne nécessaire :</label>
 <input type="int" name="qte" value="0" class="input_nbr" />
 <input type="submit" value="Valider"  />
 </form>

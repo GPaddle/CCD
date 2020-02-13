@@ -11,7 +11,6 @@ use GEG\controler\testControler;
 use GEG\controler\AjouterBesoinControler;
 use GEG\controler\CreneauControleur;
 use GEG\controler\ListBesoinControleur;
-
 $db = new DB();
 $db->addConnection(parse_ini_file("src/conf/conf.ini"));
 
@@ -22,20 +21,10 @@ $app = new \Slim\Slim;
 
 session_start();
 
-
 $app->get("/ajoutCreneau", function () {
     $v = new VueAjouterCreneau();
     $v->render();
 })->name('route_ajoutCreneau');
-
-$app->get("/loginTest", function () {
-
-    $vGenerale = new VueGenerale();
-
-    $vGenerale->render("future page de choix des utilisateurs");
-
-
-})->name('route_loginTest');
 
 //Affichage de toutes les listes
 
@@ -43,6 +32,12 @@ $app->get('/loginTest/:id', function ($id) {
     $c = new connectionControler();
     $c->getUser($id);
 })->name('route_loginTestId');
+
+$app->get('/deconnexion', function () use ($app){
+    $c = new connectionControler();
+    $c->deconnexion();
+    $app->response->redirect($app->urlFor('route_listeUser'),303);
+})->name('route_deconnexion');
 
 $app->get('/listeUser', function () {
     $c = new ListUserControler();
@@ -64,40 +59,41 @@ $app->get("/inscription",function (){
     $c=new connectionControler();
     $c->inscrire();
 });
-$app->get("/ajouterCreneau", function() {
-	$a = new CreneauControleur();
-	$a->afficher();
-});
 
-$app->post("/ajouterCreneau", function() {
-	$a = new CreneauControleur();
-	$a->SaveCreneau();
-});
+$app->get("/ajouterCreneau", function () {
+    $a = new CreneauControleur();
+    $a->afficher();
+})->name('route_ajoutCreneau_get');
 
-$app->get("/ajouterBesoin/:idCreneau", function($idCreneau) {
-    $controller = new AjouterBesoinControler();
-    $controller->renderForm($idCreneau);
+$app->post("/ajouterCreneau", function () {
+    $a = new CreneauControleur();
+    $a->SaveCreneau();
+})->name('route_ajoutCreneau_post');
+
+$app->get("/ajouterBesoin/:idCreneau", function ($idCreneau) {
+    $controler = new AjouterBesoinControler();
+    $controler->renderForm($idCreneau);
 })->name('route_ajouterBesoinform');
-$app->post("/ajoutBesoin/:idCreneau", function($idCreneau) {
-    $controller = new AjouterBesoinControler();
-    $controller->ajouterBesoin($idCreneau);
-});
-$app->get ("/test", function() {
 
-  $controller = new testControler();
-  $controller->afficher();
+$app->post("/ajouterBesoin/:idCreneau", function ($idCreneau) {
+    $controler = new AjouterBesoinControler();
+    $controler->ajouterBesoin($idCreneau);
+})->name('route_ajoutBesoinIdCreneau');
 
-});
-$app->get("/connexion",function(){
-    $controler=new connectionControler();
+$app->get("/test", function () {
+    $controler = new testControler();
+    $controler->afficher();
+})->name('route_test');
+
+$app->get("/connexion", function () {
+    $controler = new connectionControler();
     $controler->seConnecter();
 })->name('connexion');
+
 $app->get("/listeBesoin",function(){
     $controler=new ListBesoinControleur();
     $controler->render();
 });
 $app->post("/seCo",function (){
-
-}
-);
+})->name('route_listeBesoin');
 $app->run();
