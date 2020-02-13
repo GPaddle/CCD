@@ -49,12 +49,15 @@ $app->get('/', function () {
     $app = \Slim\Slim::getInstance();
     $urlModif = $app->urlFor('connexion');
     $urlModif2 = $app->urlFor('inscrire');
-    $vGenerale->render("<a href={$urlModif}>Connexion à la page</a>   <a href={$urlModif2}>S'inscrire à la page</a>");
+    $urlImg = $app->urlFor('route_home');
+    $vGenerale->render("<img style='width:30vh' src='{$urlImg}img/logo.svg'></img><br><a href={$urlModif}>Connexion à la page</a><br><a href={$urlModif2}>S'inscrire à la page</a>");
 })->name('route_home');
+
 $app->get("/inscrire",function (){
     $c =new connectionControler();
     $c->renderInscription();
 })->name("inscrire");
+
 $app->get("/inscription",function (){
     $c=new connectionControler();
     $c->inscrire();
