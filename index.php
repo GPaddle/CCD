@@ -99,9 +99,9 @@ $app->get("/inscriptionBesoin/:idBesoin", function($idBesoin) {
   $controler->ajouterBesoinInscription($idBesoin);
 });
 
-$app->post("/supUser",function (){
+$app->get("/supUser",function (){
     $c=new connectionControler();
-    $c->supprimer($_SESSION['username']['id']);
+    $c->supprimer($_SESSION['user']['id']);
 })->name("supCompte");
 
 $app->run();

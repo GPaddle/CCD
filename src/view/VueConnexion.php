@@ -23,7 +23,7 @@ class VueConnexion
 					<div class='container'>
 					<div class='row '>
 					<div class='mx-auto'>
-						<form method="post" action="seCo" class='text-center'>
+						<form method="post" action="connexion" class='text-center'>
 							<div class='text-center'>
 								<div class="input-group mb-3">
 								 	<div class="input-group-prepend">
@@ -35,7 +35,7 @@ class VueConnexion
 								 	<div class="input-group-prepend">
 								    	<span class="input-group-text" id="basic-addon1">Mot de passe</span>
 								  	</div>
-								  	<input type="password" class="form-control" placeholder="Mot de passe" name="id">
+								  	<input type="password" class="form-control" placeholder="Mot de passe" name="mdp">
 								</div>
 							</div>
 							<div class='text-center mx-auto'>
