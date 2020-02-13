@@ -10,7 +10,10 @@ class VueConnexion
 	{
 
 		$vGenerale = new VueGenerale();
-
+		$err="Connexion";
+		if (isset($_COOKIE["err"])){
+		    $err=unserialize($_COOKIE["err"]);
+        }
 		$html = <<<END
 		<!DOCTYPE html>
 		<html lang="fr">
@@ -19,7 +22,7 @@ class VueConnexion
 				<title>Connexion</title>
 			</head>
 			<body>
-					<h1 class='text-center'>Connexion</h1>
+					<h1 class='text-center'>$err</h1>
 					<div class='container'>
 					<div class='row '>
 					<div class='mx-auto'>

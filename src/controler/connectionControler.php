@@ -34,7 +34,9 @@ class connectionControler
         if ($retour) {
             $app->redirectTo("route_home");
         }else{
+            setcookie('err',serialize("Echec de l'authentification"),time()+10,"./");
             $app->redirectTo("connexion");
+
         }
     }
     public function inscrire() {
@@ -47,6 +49,7 @@ class connectionControler
         if ($retour==1&&$retour==2) {
             $app->redirectTo("route_home");
         }else{
+            setcookie('err2',serialize("Echec de l'inscription"),time()+10,"./");
             $app->redirectTo("inscrire");
         }
     }

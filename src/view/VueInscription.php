@@ -10,10 +10,13 @@ class VueInscription
     {
 
         $vGenerale = new VueGenerale();
-
+        $err="Inscription";
+        if (isset($_COOKIE["err2"])){
+            $err=unserialize($_COOKIE["err2"]);
+        }
         $html = <<<END
 			<body>
-				<h1>Inscription</h1>
+				<h1>$err</h1>
 				<form method="post" action="inscrire">
 					<label>Identifiant</label>
 					<input type="text" name="nom">
