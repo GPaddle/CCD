@@ -20,11 +20,11 @@ class VueConnexion
 			</head>
 			<body>
 				<h1>Connexion</h1>
-				<form method="post">
+				<form method="post" action="seCo">
 					<label>Identifiant</label>
-					<input type="text">
+					<input type="text" name="id">
 					<label>Mot de passe</label>
-					<input type="password">
+					<input type="password" name="mdp" >
 					<input type="submit" value="Valider">
 				</form>
 			</body>
