@@ -1,5 +1,4 @@
 <?php
-namespace src\
 // Changement de locale pour être en français
 if (!setlocale(LC_TIME, 'fr_FR.utf8', 'fr_FR', 'fr'))
     throw new Exception ('Français introuvable : corriger ou commenter cette ligne (pour la langue par défaut)');
@@ -29,8 +28,8 @@ function calc_date($ancre, $semaine, $jour, $cycle = 0)
     // On calcule le jour recherché (décalage entier par rapport
     // à la date de départ -- « l'ancre »)
     $nb_jours = $cycle * 28 + (ord($semaine) - ord('A')) * 7 + $jour - 1;
-    $date_init = new DateTime($ancre);
-    $date_res = $date_init->add(new DateInterval('P' . $nb_jours . 'D'))->format('U');
+    $date_init = new \DateTime($ancre);
+    $date_res = $date_init->add(new \DateInterval('P' . $nb_jours . 'D'))->format('U');
 
     // Attention, distinguo Windows/reste du monde (Windows, WinNT, Win32)
     $format_jour_no = (preg_match('#win[dn3]#', PHP_OS))? '%#d' : '%e';

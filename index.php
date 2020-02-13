@@ -56,14 +56,14 @@ $app->get('/', function () {
     $vGenerale->render("HOME");
 })->name('route_home');
 
-$app->get("/FormulaireAjouterCreneau", function() {
+$app->get("/ajouterCreneau", function() {
 	$a = new CreneauControleur();
 	$a->afficher();
 });
 
-$app->post("/newCreneau", function() {
+$app->post("/ajouterCreneau", function() {
 	$a = new CreneauControleur();
-	$a->SaveCreneau($_POST['Jour'],$_POST['Semaine'],$_POST['HeureD'],$_POST['HeureF']);
+	$a->SaveCreneau();
 });
 
 $app->get("/ajouterBesoin/:idCreneau", function($idCreneau) {
