@@ -13,7 +13,12 @@ class connectionControler
     {
         $user = User::where('id','=',$id)->first();
 
-        $v = new VueUtilisateur($user);
-        $v->render();
+        if (!isset($_SESSION['user'])) {
+            $_SESSION['user']['id']=$id;
+        }
+
+
+        $v = new VueUtilisateur();
+        $v->render($user);
     }
 }

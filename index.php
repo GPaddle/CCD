@@ -36,5 +36,9 @@ $app->get('/', function () {
     echo "HOME";
 })->name('route_home');
 
+$app->get("/FormulaireAjouterCreneau", function() {
+	$a = new VueAjouterCreneau();
+	$a->afficher();
+});
 
 $app->run();
