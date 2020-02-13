@@ -66,30 +66,22 @@ END;
 
 
 		$siCo = isset($_SESSION['user'])? <<<END
-		<div class="topbar-divider d-none d-sm-block"></div>
 
 		<!-- Nav Item - User Information -->
 		<li class="nav-item dropdown no-arrow">
 		  <a class="nav-link dropdown-toggle" href="{$urlHome}loginTest/$id" id="userDropdown" role="button" data-toggle="dropdown"
 			aria-haspopup="true" aria-expanded="false">
-			<span class="mr-2 d-none d-lg-inline text-gray-600 small">$user</span>
+			<div class="mr-2 d-none d-lg-inline text-gray-600 small">$user</div>
+		<div class="topbar-divider d-none d-sm-block"></div>
 			<img class="img-profile rounded-circle" src="{$urlHome}img/$id.jpg">
 		  </a>
+
 		  <!-- Dropdown - User Information -->
 		  <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
 			<a class="dropdown-item" href="$urlPagePerso">
 			  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
 			  Profile
 			</a>
-			<a class="dropdown-item" href="#">
-			  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-			  Settings
-			</a>
-			<a class="dropdown-item" href="#">
-			  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-			  Activity Log
-			</a>
-			<div class="dropdown-divider"></div>
 			<a class="dropdown-item" href="$urlDeconnexion">
 			  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
 			  Logout
@@ -110,6 +102,9 @@ END
           
 
           <!-- Topbar Navbar -->
+          <a class="nav-link" href="$urlHome">
+			  <span class="mr-2  d-lg-inline text-gray-600 h3" >Accueil</span>
+			</a>
           <ul class="navbar-nav ml-auto">
 
             <!-- Nav Item - Search Dropdown (Visible Only XS) -->
@@ -135,10 +130,8 @@ END
               </div>
             </li>
 
-			<li class="nav-item dropdown no-arrow">
-			<a class="nav-link dropdown-toggle" href="$urlHome" id="userDropdown">
-			  <span class="mr-2 d-none d-lg-inline text-gray-600 small" >Accueil</span>
-			</a>
+			<li class="nav-item ">
+			
 			
 		  </li>
 
@@ -187,9 +180,16 @@ END;
 		<footer class="sticky-footer bg-white">
 		<div class="container my-auto">
 		  <div class="copyright text-center my-auto">
-			<span>Copyright &copy; Your Website <script>new Date(Date.now()).getYear()+1900</script></span>
+			<span id="date"></span>
 		  </div>
 		</div>
+		
+		<script>
+		let txt="Copyright &copy; Your Website "
+		txt+=new Date(Date.now()).getYear()+1900;
+
+		document.querySelector("#date").innerHTML=txt;
+		</script>
 	  </footer>
 END;
 		return ($html);

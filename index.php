@@ -11,6 +11,8 @@ use GEG\controler\PrincipaleControler;
 use GEG\controler\AjouterBesoinControler;
 use GEG\controler\CreneauControleur;
 use GEG\controler\ListBesoinControleur;
+use GEG\controler\HomeControler;
+
 $db = new DB();
 $db->addConnection(parse_ini_file("src/conf/conf.ini"));
 
@@ -20,11 +22,6 @@ $db->bootEloquent();
 $app = new \Slim\Slim;
 
 session_start();
-
-$app->get("/ajoutCreneau", function () {
-    $v = new VueAjouterCreneau();
-    $v->render();
-})->name('route_ajoutCreneau');
 
 //Affichage de toutes les listes
 
@@ -45,17 +42,16 @@ $app->get('/listeUser', function () {
 })->name('route_listeUser');
 
 $app->get('/', function () {
-    $vGenerale = new VueGenerale();
-    $app = \Slim\Slim::getInstance();
-    $urlModif = $app->urlFor('connexion');
-    $urlModif2 = $app->urlFor('inscrire');
-    $vGenerale->render("<a href={$urlModif}>Connexion à la page</a>   <a href={$urlModif2}>S'inscrire à la page</a>");
+    $controller = new HomeControler();
+    $controller->render();
 })->name('route_home');
+
 $app->get("/inscrire",function (){
     $c =new connectionControler();
     $c->renderInscription();
 })->name("inscrire");
-$app->post("/inscription",function (){
+
+$app->get("/inscription",function (){
     $c=new connectionControler();
     $c->inscrire();
 });
@@ -81,12 +77,7 @@ $app->post("/ajouterBesoin/:idCreneau", function ($idCreneau) {
     $controler->ajouterBesoin($idCreneau);
 })->name('route_ajoutBesoinIdCreneau');
 
-$app->get("/home", function () {
-    $controler = new PrincipaleControler();
-    $controler->afficher();
-})->name('route_accueil');
-
-$app->post("/connexion", function () {
+$app->get("/connexion", function () {
     $controler = new connectionControler();
     $controler->seConnecter();
 })->name('connexion');
@@ -97,4 +88,5 @@ $app->get("/listeBesoin",function(){
 })->name('route_listeBesoin');
 $app->post("/seCo",function (){
 });
+
 $app->run();
