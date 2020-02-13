@@ -20,7 +20,7 @@ class VueConnexion
 			</head>
 			<body>
 				<h1>Connexion</h1>
-				<form method="post" action="seCo">
+				<form method="post" action="connexion">
 					<label>Identifiant</label>
 					<input type="text" name="id">
 					<label>Mot de passe</label>

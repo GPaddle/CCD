@@ -21,7 +21,7 @@ class Authentification
                 $hash = password_hash($password,PASSWORD_BCRYPT);
                 $compte = new User();
                 $compte->nom = $username;
-                $compte->password = $hash;
+                $compte->mdp = $hash;
                 $compte->mail=$mail;
                 $compte->save();
                 $_SESSION['id'] = $compte->id;
@@ -47,7 +47,7 @@ class Authentification
     public static function authenticate ( $username, $password ) {
         // charger utilisateur $user
         $retour=false;
-        $compte = User::where('name','=',$username)->first();
+        $compte = User::where('nom','=',$username)->first();
         // vérifier $user->hash == hash($password)
         if(password_verify($password,$compte['mdp'])){
             self::loadProfile($compte['id']);

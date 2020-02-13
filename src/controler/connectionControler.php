@@ -27,10 +27,15 @@ class connectionControler
         $v->render();
     }
     public function authentifier(){
-        $app=$app = \Slim\Slim::getInstance();
+        $app= \Slim\Slim::getInstance();
         $id=$app->request()->params('id');
         $mdp=$app->request()->params('mdp');
-        Authentification::authenticate($id,$mdp);
+        $retour=Authentification::authenticate($id,$mdp);
+        if ($retour==1&&$retour==2) {
+            $app->redirectTo("route_home");
+        }else{
+            $app->redirectTo("connexion");
+        }
     }
     public function inscrire() {
         $app = \Slim\Slim::getInstance();
@@ -39,6 +44,7 @@ class connectionControler
         $mdp2=$app->request()->params('mdp2');
         $mail=$app->request()->params('mail');
         Authentification::createUser($nom,$mdp,$mdp2,$mail);
+        $app->redirectTo("route_home");
     }
     public function renderInscription(){
         $v=new VueInscription();

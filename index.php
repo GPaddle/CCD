@@ -33,7 +33,7 @@ $app->get('/loginTest/:id', function ($id) {
 $app->get('/deconnexion', function () use ($app){
     $c = new connectionControler();
     $c->deconnexion();
-    $app->response->redirect($app->urlFor('route_listeUser'),303);
+    $app->response->redirect($app->urlFor('route_home'),303);
 })->name('route_deconnexion');
 
 $app->get('/listeUser', function () {
@@ -55,7 +55,6 @@ $app->post("/inscrire",function (){
     $c=new connectionControler();
     $c->inscrire();
 });
-
 $app->get("/ajouterCreneau", function () {
     $a = new CreneauControleur();
     $a->afficher();
@@ -82,9 +81,16 @@ $app->get("/connexion", function () {
     $controler->seConnecter();
 })->name('connexion');
 
+$app->post("/connexion", function () {
+    $controler = new connectionControler();
+    $controler->authentifier();
+})->name('connexion2');
+
 $app->get("/listeBesoin",function(){
     $controler=new ListBesoinControleur();
     $controler->render();
+})->name('route_listeBesoin');
+$app->post("/seCo",function (){
 });
 
 $app->get("/inscriptionBesoin", function() {
