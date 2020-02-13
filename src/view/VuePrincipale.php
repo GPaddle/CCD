@@ -22,7 +22,7 @@ class VuePrincipale
       $content .= <<<END
   <div id="crenau-1">
     <span>{$value->debutHeure}h à {$value->finHeure}h | Jour : $value->jour | Semaine : $value->semaine | Cycle : $value->cycle</span>
-    <button type="button" class="float-right btn btn-danger" data-target="#creneau1" data-toggle="modal">Modifier</button>
+    <button type="button" class="float-right btn btn-danger" data-target="#creneau$id" data-toggle="modal">Modifier</button>
     <hr>
   </div>
 
