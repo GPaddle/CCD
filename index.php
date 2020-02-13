@@ -6,6 +6,9 @@ use Illuminate\Database\Capsule\Manager as DB;
 use GEG\controler\connectionControler;
 use GEG\controler\notFoundControler;
 use GEG\controler\ListUserControler;
+use GEG\view\VueAjouterCreneau;
+
+
 $db = new DB();
 $db->addConnection(parse_ini_file("src/conf/conf.ini"));
 
