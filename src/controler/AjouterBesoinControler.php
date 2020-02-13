@@ -1,6 +1,8 @@
 <?php
 	namespace GEG\controler;
 
+	use GEG\view\VueFormulaireBesoin;
+
 	class AjouterBesoinControler {
 		public function renderForm() {
 			$vue = new VueFormulaireBesoin();
