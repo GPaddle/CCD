@@ -187,9 +187,16 @@ END;
 		<footer class="sticky-footer bg-white">
 		<div class="container my-auto">
 		  <div class="copyright text-center my-auto">
-			<span>Copyright &copy; Your Website <script>new Date(Date.now()).getYear()+1900</script></span>
+			<span id="date"></span>
 		  </div>
 		</div>
+		
+		<script>
+		let txt="Copyright &copy; Your Website "
+		txt+=new Date(Date.now()).getYear()+1900;
+
+		document.querySelector("#date").innerHTML=txt;
+		</script>
 	  </footer>
 END;
 		return ($html);
