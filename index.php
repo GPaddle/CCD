@@ -91,8 +91,6 @@ $app->get("/listeBesoin",function(){
     $controler=new ListBesoinControleur();
     $controler->render();
 })->name('route_listeBesoin');
-$app->post("/seCo",function (){
-});
 
 $app->get("/inscriptionBesoin/:idBesoin", function($idBesoin) {
   $controler = new InscriptionBesoinControler();
