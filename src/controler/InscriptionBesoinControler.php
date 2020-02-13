@@ -1,5 +1,7 @@
 <?php
-
+namespace GEG\controler;
+use GEG\model\Besoin;
+use GEG\view\VueInscriptionBesoin;
 
 class InscriptionBesoinControleur{
 
@@ -15,7 +17,7 @@ class InscriptionBesoinControleur{
   {
     $besoinInscr = new InscriptionBesoin();
 
-    $besoinInscr->idUser = ;
+    $besoinInscr->idUser = $_SESSION['user']['id'];
     $besoin->idBesoin = $_POST['idBesoin'];
 
     $besoin->save();
