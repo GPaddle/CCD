@@ -48,10 +48,13 @@ class Authentification
         $retour=false;
         $compte = User::where('nom','=',$username)->first();
         // vérifier $user->hash == hash($password)
-        if(password_verify($password,$compte['mdp'])){
-            self::loadProfile($compte['id']);
-            $retour=true;
+        if($compte) {
+            if(password_verify($password,$compte['mdp'])) {
+                self::loadProfile($compte['id']);
+                $retour=true;
+            }
         }
+
         return $retour;
         // charger profil ($user->id)
 

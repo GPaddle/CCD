@@ -12,6 +12,7 @@ use GEG\model\Creneau;
 use GEG\view\VueHome;
 use GEG\view\VuePrincipale;
 use GEG\view\VueGenerale;
+use Slim\Slim;
 
 class HomeControler
 {
@@ -19,6 +20,7 @@ class HomeControler
 	{
 		$app = \Slim\Slim::getInstance();
 		if (isset($_SESSION["user"])) {
+		    try {
 			$t = Creneau::orderBy("cycle")->orderBy("semaine")->orderBy("jour")->orderBy("debutHeure")->get();
 			$k;
 			foreach ($t as $value) {
@@ -27,8 +29,12 @@ class HomeControler
 			}
 			$v = new VuePrincipale($k);
 
-			$user = User::select("isAdmin")->where("id", "=", $_SESSION["user"]["id"])->first();
-			$v->render($user->isAdmin);
+                $user = User::select("isAdmin")->where("id", "=", $_SESSION["user"]["id"])->first();
+                $v->render($user->isAdmin);
+            }catch(\Exception $e){
+		        session_destroy();
+		        $app->redirectTo("route_home");
+            }
 		} else {
 			$vGenerale = new VueGenerale();
 

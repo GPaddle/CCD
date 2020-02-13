@@ -31,10 +31,12 @@ class connectionControler
         $id=$app->request()->params('id');
         $mdp=$app->request()->params('mdp');
         $retour=Authentification::authenticate($id,$mdp);
-        if ($retour==1&&$retour==2) {
+        if ($retour) {
             $app->redirectTo("route_home");
         }else{
+            setcookie('err',serialize("Echec de l'authentification"),time()+10,"./");
             $app->redirectTo("connexion");
+
         }
     }
     public function inscrire() {
@@ -43,8 +45,13 @@ class connectionControler
         $mdp=$app->request()->params('mdp');
         $mdp2=$app->request()->params('mdp2');
         $mail=$app->request()->params('mail');
-        Authentification::createUser($nom,$mdp,$mdp2,$mail);
-        $app->redirectTo("route_home");
+        $retour=Authentification::createUser($nom,$mdp,$mdp2,$mail);
+        if ($retour===1||$retour===2) {
+            setcookie('err2',serialize("Echec de l'inscription"),time()+10,"./");
+            $app->redirectTo("inscrire");
+        }else{
+            $app->redirectTo("route_home");
+        }
     }
     public function renderInscription(){
         $v=new VueInscription();

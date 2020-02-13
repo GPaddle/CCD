@@ -1,12 +1,58 @@
-.flex{
+.flex {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
 }
-.ligne > a > div{
+
+.ligne>a>div {
 	text-align: center;
 }
 
 .logo {
 	height: 50px;
+}
+
+.newDay {
+	background: #f00;
+}
+
+
+hr.numSem1{
+	
+	border-left:none;
+	background:rgb(255, 0, 0);
+}
+
+hr.numSem2{
+	
+	border-left:none;
+	background:rgb(255, 72, 0);
+}
+
+hr.numSem3{
+	
+	border-left:none;
+	background:rgb(1, 102, 235);
+}
+
+hr.numSem4{
+	
+	border-left:none;
+	background:rgb(7, 221, 0);
+}
+
+.numSem1{
+	border-left: 5px solid rgb(255, 0, 0);
+}
+
+.numSem2{
+	border-left: 5px solid rgb(255, 72, 0);
+}
+
+.numSem3{
+	border-left: 5px solid rgb(1, 102, 235);
+}
+
+.numSem4{
+	border-left: 5px solid rgb(7, 221, 0);
 }

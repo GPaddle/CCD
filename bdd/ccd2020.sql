@@ -21,23 +21,22 @@ CREATE TABLE user (
   nom varchar(30) CHARACTER SET utf8 NOT NULL,
   mdp varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   mail varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  isAdmin boolean
+  isAdmin boolean DEFAULT false
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO user (id, nom) VALUES
-(1, 'Cassandre'),
-(2, 'Achille'),
-(3, 'Calypso'),
-(4, 'Bacchus'),
-(5, 'Diane'),
-(6, 'Clark'),
-(7, 'Helene'),
-(8, 'Jason'),
-(9, 'Bruce'),
-(10, 'Pénélope'),
-(11, 'Ariane'),
-(12, 'Lois');
-
+INSERT INTO user (id, nom,mdp,mail,isAdmin) VALUES
+(1, 'Cassandre','$2y$10$8fU9ac6GKTEf5bxFkJTMEexzyZGA.XBdshyqhTGF8/wRWSTp.ErMi','vide',false),
+(2, 'Achille','$2y$10$8fU9ac6GKTEf5bxFkJTMEexzyZGA.XBdshyqhTGF8/wRWSTp.ErMi','vide',false),
+(3, 'Calypso','$2y$10$8fU9ac6GKTEf5bxFkJTMEexzyZGA.XBdshyqhTGF8/wRWSTp.ErMi','vide',false),
+(4, 'Bacchus','$2y$10$8fU9ac6GKTEf5bxFkJTMEexzyZGA.XBdshyqhTGF8/wRWSTp.ErMi','vide',false),
+(5, 'Diane','$2y$10$8fU9ac6GKTEf5bxFkJTMEexzyZGA.XBdshyqhTGF8/wRWSTp.ErMi','vide',false),
+(6, 'Clark','$2y$10$8fU9ac6GKTEf5bxFkJTMEexzyZGA.XBdshyqhTGF8/wRWSTp.ErMi','vide',false),
+(7, 'Helene','$2y$10$8fU9ac6GKTEf5bxFkJTMEexzyZGA.XBdshyqhTGF8/wRWSTp.ErMi','vide',false),
+(8, 'Jason','$2y$10$8fU9ac6GKTEf5bxFkJTMEexzyZGA.XBdshyqhTGF8/wRWSTp.ErMi','vide',false),
+(9, 'Bruce','$2y$10$8fU9ac6GKTEf5bxFkJTMEexzyZGA.XBdshyqhTGF8/wRWSTp.ErMi', 'vide',false),
+(10, 'Pénélope','$2y$10$8fU9ac6GKTEf5bxFkJTMEexzyZGA.XBdshyqhTGF8/wRWSTp.ErMi','vide',false),
+(11, 'Ariane','$2y$10$8fU9ac6GKTEf5bxFkJTMEexzyZGA.XBdshyqhTGF8/wRWSTp.ErMi','vide',false),
+(12, 'Lois','$2y$10$8fU9ac6GKTEf5bxFkJTMEexzyZGA.XBdshyqhTGF8/wRWSTp.ErMi','vide',false);
 
 DROP TABLE IF EXISTS `creneau`;
 create table creneau(
@@ -76,6 +75,7 @@ ALTER TABLE role
 ALTER TABLE user
   MODIFY id int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
+DROP TABLE IF EXISTS `InscriptionBesoin`;
 create table InscriptionBesoin(
     idUser int,
     idBesoin int,

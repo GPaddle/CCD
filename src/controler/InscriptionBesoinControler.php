@@ -4,25 +4,20 @@ namespace GEG\controler;
 use GEG\model\Besoin;
 use GEG\view\VueInscriptionBesoin;
 use GEG\model\InscriptionBesoin;
+use GEG\model\Role;
 
 class InscriptionBesoinControler{
 
-  public function renderForm($idCreneau)
-	{
-    $roles = Besoin::get()->where("id","=",$idCreneau);
-
-    $vue = new VueInscriptionBesoin($roles);
-    $vue->render();
-  }
-
-  public function ajouterBesoinInscription()
+  public function ajouterBesoinInscription($idBesoin)
   {
     $besoinInscr = new InscriptionBesoin();
 
     $besoinInscr->idUser = $_SESSION['user']['id'];
-    $besoin->idBesoin = $_POST['idBesoin'];
+    $besoinInscr->idBesoin = $idBesoin;
 
-    $besoin->save();
+    $besoinInscr->save();
+    $app= \Slim\Slim::getInstance();
+    $app->redirectTo("route_home");
   }
 
 

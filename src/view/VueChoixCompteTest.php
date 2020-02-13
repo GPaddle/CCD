@@ -46,7 +46,7 @@ class VueChoixCompteTest
     {
         $key+=1;
         $res = <<<END
-<div class="ligne"><a href="loginTest/$key">
+<div class="ligne"><a href="users/$key">
 END;
 
         foreach ($v as $val => $val2) {

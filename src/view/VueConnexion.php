@@ -10,7 +10,10 @@ class VueConnexion
 	{
 
 		$vGenerale = new VueGenerale();
-
+		$err="Connexion";
+		if (isset($_COOKIE["err"])){
+		    $err=unserialize($_COOKIE["err"]);
+        }
 		$html = <<<END
 		<!DOCTYPE html>
 		<html lang="fr">
@@ -19,23 +22,23 @@ class VueConnexion
 				<title>Connexion</title>
 			</head>
 			<body>
-					<h1 class='text-center'>Connexion</h1>
+					<h1 class='text-center'>$err</h1>
 					<div class='container'>
 					<div class='row '>
 					<div class='mx-auto'>
-						<form method="post" action="seCo" class='text-center'>
+						<form method="post" action="connexion" class='text-center'>
 							<div class='text-center'>
 								<div class="input-group mb-3">
 								 	<div class="input-group-prepend">
 								    	<span class="input-group-text" id="basic-addon1">Identifiant</span>
 								  	</div>
-								  	<input type="text" class="form-control" placeholder="Identifiant" name="id"
+								  	<input type="text" class="form-control" placeholder="Identifiant" name="id">
 								</div>
 								<div class="input-group mb-3">
 								 	<div class="input-group-prepend">
 								    	<span class="input-group-text" id="basic-addon1">Mot de passe</span>
 								  	</div>
-								  	<input type="password" class="form-control" placeholder="Mot de passe" name="id"
+								  	<input type="password" class="form-control" placeholder="Mot de passe" name="mdp">
 								</div>
 							</div>
 							<div class='text-center mx-auto'>
