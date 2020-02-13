@@ -1,75 +1,77 @@
--- phpMyAdmin SQL Dump
--- version 4.5.4.1
--- http://www.phpmyadmin.net
---
--- Client :  localhost
--- Généré le :  Jeu 13 Février 2020 à 16:24
--- Version du serveur :  5.7.11
--- Version de PHP :  7.0.3
-
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Base de données :  `test`
---
-
--- --------------------------------------------------------
-
---
--- Structure de la table `user`
---
-
-CREATE TABLE `user` (
-  `id` int(11) NOT NULL,
-  `nom` varchar(30) NOT NULL,
-  `mdp` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `mail` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
+DROP TABLE IF EXISTS `role`;
+CREATE TABLE role (
+  id int(11) NOT NULL,
+  label varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Contenu de la table `user`
---
+INSERT INTO role (id, label) VALUES
+(1, 'Caissier titulaire'),
+(2, 'Caissier assistant'),
+(3, 'Gestionnaire de vrac titulaire'),
+(4, 'Gestionnaire de vrac assistant'),
+(5, 'Chargé d\'accueil titulaire'),
+(6, 'Chargé d\'accueil assistant');
 
-INSERT INTO `user` (`id`, `nom`, `mdp`, `mail`) VALUES
-(1, 'Cassandre', '', ''),
-(2, 'Achille', '', ''),
-(3, 'Calypso', '', ''),
-(4, 'Bacchus', '', ''),
-(5, 'Diane', '', ''),
-(6, 'Clark', '', ''),
-(7, 'Helene', '', ''),
-(8, 'Jason', '', ''),
-(9, 'Bruce', '', ''),
-(10, 'Pénélope', '', ''),
-(11, 'Ariane', '', ''),
-(12, 'Lois', '', '');
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE user (
+  id int(11) NOT NULL,
+  nom varchar(30) CHARACTER SET utf8 NOT NULL,
+  mdp varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  mail varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  isAdmin boolean
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Index pour les tables exportées
---
+INSERT INTO user (id, nom) VALUES
+(1, 'Cassandre'),
+(2, 'Achille'),
+(3, 'Calypso'),
+(4, 'Bacchus'),
+(5, 'Diane'),
+(6, 'Clark'),
+(7, 'Helene'),
+(8, 'Jason'),
+(9, 'Bruce'),
+(10, 'Pénélope'),
+(11, 'Ariane'),
+(12, 'Lois');
 
---
--- Index pour la table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`);
 
---
--- AUTO_INCREMENT pour les tables exportées
---
+DROP TABLE IF EXISTS `creneau`;
+create table creneau(
+  id int AUTO_INCREMENT,
+  jour int,
+  semaine int,
+  cycle int,
+  debutHeure int,
+  finHeure int,
+  primary key(id)
+);
 
---
--- AUTO_INCREMENT pour la table `user`
---
-ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+insert into creneau (jour, semaine, cycle, debutHeure, finHeure) VALUES
+  (3, 2, 1, 14, 17),
+  (1, 2, 1, 8, 10),
+  (4, 2, 1, 10, 12);
+
+DROP TABLE IF EXISTS `besoin`;
+CREATE TABLE besoin(
+  id int AUTO_INCREMENT,
+	idCreneau int,
+	idRole int,
+	qte int,
+  PRIMARY KEY (id)
+);
+
+ALTER TABLE role
+  ADD PRIMARY KEY (id);
+
+ALTER TABLE user
+  ADD PRIMARY KEY (id);
+
+ALTER TABLE role
+  MODIFY id int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+ALTER TABLE user
+  MODIFY id int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
