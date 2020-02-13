@@ -75,3 +75,10 @@ ALTER TABLE role
 
 ALTER TABLE user
   MODIFY id int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+create table InscriptionBesoin(
+    idUser int,
+    idBesoin int,
+    FOREIGN KEY (idUser) REFERENCES user(id),
+    FOREIGN KEY (idBesoin) REFERENCES besoin(id)
+    );
