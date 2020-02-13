@@ -86,15 +86,19 @@ END;
         $tab = $this->convertirFormatTab($this->tab);
         foreach ($tab as $key => $v) {
             $res = <<<END
-$res
-{$this->formatLigne($key,$v)}
+                $res
+                {$this->formatLigne($key,$v)}
 END;
         }
+
         return $res;
     }
 
     public function render()
     {
-        echo $this->afficher();
+
+        
+		$vGenerale = new VueGenerale();
+        $vGenerale->render($this->afficher());
     }
 }

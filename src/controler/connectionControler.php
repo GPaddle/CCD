@@ -11,11 +11,9 @@ class connectionControler
 {
     public function getUser($id)
     {
-        $user = User::where('id','=',$id)->first();
+        $user = User::where('id', '=', $id)->first();
 
-        if (!isset($_SESSION['user'])) {
-            $_SESSION['user']['id']=$id;
-        }
+        $_SESSION['user']['id'] = $id;
 
 
         $v = new VueUtilisateur();
