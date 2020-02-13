@@ -12,7 +12,7 @@ use GEG\controler\AjouterBesoinControler;
 use GEG\controler\CreneauControleur;
 use GEG\controler\ListBesoinControleur;
 use GEG\controler\HomeControler;
-use GEG\controler\InscriptionBesoinControleur;
+use GEG\controler\InscriptionBesoinControler;
 
 $db = new DB();
 $db->addConnection(parse_ini_file("src/conf/conf.ini"));
@@ -94,13 +94,13 @@ $app->get("/listeBesoin",function(){
 $app->post("/seCo",function (){
 });
 
-$app->get("/inscriptionBesoin/:idCreneau", function() {
-  $controler = new InscriptionBesoinControleur();
+$app->get("/inscriptionBesoin/:idCreneau", function($idCreneau) {
+  $controler = new InscriptionBesoinControler();
   $controler->renderForm($idCreneau);
 });
 
 $app->post("/inscriptionBesoin", function() {
-  $controler = new InscriptionBesoinControleur();
+  $controler = new InscriptionBesoinControler();
   $controler->ajouterBesoinInscription();
 });
 
