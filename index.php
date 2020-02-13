@@ -80,6 +80,10 @@ $app->get("/connexion", function () {
     $controler = new connectionControler();
     $controler->seConnecter();
 })->name('connexion');
+$app->post("/connexion", function () {
+    $controler = new connectionControler();
+    $controler->authentifier();
+})->name('connexion');
 
 $app->get("/listeBesoin",function(){
     $controler=new ListBesoinControleur();

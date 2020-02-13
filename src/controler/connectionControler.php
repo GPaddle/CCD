@@ -31,6 +31,7 @@ class connectionControler
         $id=$app->request()->params('id');
         $mdp=$app->request()->params('mdp');
         Authentification::authenticate($id,$mdp);
+        $app->redirectTo("route_home");
     }
     public function inscrire() {
         $app = \Slim\Slim::getInstance();
@@ -39,7 +40,7 @@ class connectionControler
         $mdp2=$app->request()->params('mdp2');
         $mail=$app->request()->params('mail');
         Authentification::createUser($nom,$mdp,$mdp2,$mail);
-
+        $app->redirectTo("route_home");
     }
     public function renderInscription(){
         $v=new VueInscription();
