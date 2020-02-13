@@ -3,6 +3,7 @@ namespace GEG\controler;
 
 use GEG\model\Besoin;
 use GEG\view\VueInscriptionBesoin;
+use GEG\model\InscriptionBesoin;
 
 class InscriptionBesoinControleur{
 
