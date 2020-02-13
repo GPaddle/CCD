@@ -64,7 +64,7 @@ $app->get("/ajouterCreneau", function () {
 $app->post("/ajouterCreneau", function () use($app) {
     $a = new CreneauControleur();
     $a->SaveCreneau();
-    $app->response->redirect($app->urlFor('route_accueil'),303);
+    $app->response->redirect($app->urlFor('route_home'),303);
 })->name('route_ajoutCreneau_post');
 
 $app->get("/ajouterBesoin/:idCreneau", function ($idCreneau) {
