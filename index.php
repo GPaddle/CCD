@@ -51,7 +51,7 @@ $app->get('/listeUser', function () {
 
 $app->get('/', function () {
     $vGenerale = new VueGenerale();
-    $vGenerale->render("HOME");
+    $vGenerale->render("Connexion à la page");
 })->name('route_home');
 
 $app->get("/ajouterCreneau", function() {
@@ -68,7 +68,8 @@ $app->get("/ajouterBesoin/:idCreneau", function($idCreneau) {
     $controller = new AjouterBesoinControler();
     $controller->renderForm($idCreneau);
 })->name('route_ajouterBesoinform');
-$app->get("/ajoutBesoin/:idCreneau", function($idCreneau) {
+
+$app->post("/ajouterBesoin/:idCreneau", function($idCreneau) {
     $controller = new AjouterBesoinControler();
     $controller->ajouterBesoin($idCreneau);
 });
