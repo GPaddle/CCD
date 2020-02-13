@@ -50,6 +50,9 @@ END;
 
 		$app = \Slim\Slim::getInstance();
 		$urlHome = $app->urlFor('route_home');
+		$urlPagePerso = $app->urlFor('route_loginTestId',['id'=>$id]);
+		
+		$urlDeconnexion = $app->urlFor('route_deconnexion');
 
 		if ($urlHome == "/") {
 			$urlHome = "";
@@ -111,7 +114,7 @@ END;
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="$urlPagePerso">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
                 </a>
@@ -124,7 +127,7 @@ END;
                   Activity Log
                 </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                <a class="dropdown-item" href="$urlDeconnexion">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                   Logout
                 </a>

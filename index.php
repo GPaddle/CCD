@@ -22,18 +22,10 @@ $app = new \Slim\Slim;
 
 session_start();
 
-
 $app->get("/ajoutCreneau", function () {
     $v = new VueAjouterCreneau();
     $v->render();
 })->name('route_ajoutCreneau');
-
-$app->get("/loginTest", function () {
-
-    $vGenerale = new VueGenerale();
-
-    $vGenerale->render("future page de choix des utilisateurs");
-})->name('route_loginTest');
 
 //Affichage de toutes les listes
 
@@ -41,6 +33,12 @@ $app->get('/loginTest/:id', function ($id) {
     $c = new connectionControler();
     $c->getUser($id);
 })->name('route_loginTestId');
+
+$app->get('/deconnexion', function () use ($app){
+    $c = new connectionControler();
+    $c->deconnexion();
+    $app->response->redirect($app->urlFor('route_listeUser'),303);
+})->name('route_deconnexion');
 
 $app->get('/listeUser', function () {
     $c = new ListUserControler();
