@@ -27,7 +27,7 @@ class connectionControler
         $v->render();
     }
     public function authentifier(){
-        $app=$app = \Slim\Slim::getInstance();
+        $app= \Slim\Slim::getInstance();
         $id=$app->request()->params('id');
         $mdp=$app->request()->params('mdp');
         Authentification::authenticate($id,$mdp);
@@ -39,6 +39,7 @@ class connectionControler
         $mdp2=$app->request()->params('mdp2');
         $mail=$app->request()->params('mail');
         Authentification::createUser($nom,$mdp,$mdp2,$mail);
+
     }
     public function renderInscription(){
         $v=new VueInscription();

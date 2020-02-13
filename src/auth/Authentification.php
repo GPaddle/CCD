@@ -21,7 +21,7 @@ class Authentification
                 $hash = password_hash($password,PASSWORD_BCRYPT);
                 $compte = new User();
                 $compte->nom = $username;
-                $compte->password = $hash;
+                $compte->mdp = $hash;
                 $compte->mail=$mail;
                 $compte->save();
                 $_SESSION['id'] = $compte->id;
