@@ -60,7 +60,6 @@ END;
 
       $content .= <<<END
   <div class ="$styleBord" id="crenau-$id">
-    <span class='ml-5'>1 / 6</span>
     <span class="pl-4">$date->jour_nom $date->jour_no $date->mois_nom $date->annee_no de {$value[0]->debutHeure}h à {$value[0]->finHeure}h</span>
     <button type="button" class="float-right btn btn-danger" data-target="#creneau$id" data-toggle="modal">Modifier</button>
     <hr class="$style">
