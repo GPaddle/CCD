@@ -2,7 +2,7 @@
 
 namespace GEG\model;
 
-class Item extends \Illuminate\Database\Eloquent\Model
+class User extends \Illuminate\Database\Eloquent\Model
 {
     protected $table = 'user';
     protected $primaryKey = 'id';
