@@ -26,9 +26,16 @@ class VueChoixCompteTest
      * @param $tab Le tableau à convertir au cas où
      * @return mixed le tableau
      */
-     private function convertirFormat($tab){
-        return $tab; // Au cas où le tableau reçu serait incompatible à la vue faite
-    }
+    private function convertirFormat($tab){
+        $res=array();
+        $it=0;
+        foreach ($tab as $key ){
+            $res[]+=array();
+            foreach ($key as $libelle => $v ){
+                $res[$key];
+            }
+            $it++;
+        }
 
     /**
      * Converti les valeurs en ligne html
