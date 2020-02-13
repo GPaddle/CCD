@@ -87,8 +87,4 @@ $app->get("/listeBesoin",function(){
     $controler->render();
 });
 
-$app->post("/seCo",function (){
-
-})->name('route_listeBesoin');
-
 $app->run();
