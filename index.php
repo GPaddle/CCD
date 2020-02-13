@@ -92,8 +92,20 @@ $app->get("/listeBesoin",function(){
 })->name('route_listeBesoin');
 $app->post("/seCo",function (){
 });
+
+$app->get("/inscriptionBesoin", function() {
+  $controler = new InscriptionBesoinControleur();
+  $controler->renderForm();
+});
+
+$app->post("/inscriptionBesoin", function() {
+  $controler = new InscriptionBesoinControleur();
+  $controler->renderForm();
+});
+
 $app->post("/supUser",function (){
     $c=new connectionControler();
     $c->supprimer($_SESSION['id']);
 })->name("supCompte");
+
 $app->run();
