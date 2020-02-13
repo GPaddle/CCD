@@ -9,6 +9,7 @@ use GEG\view\VueAjouterCreneau;
 use GEG\view\VueGenerale;
 use GEG\controler\ListUserControler;
 use GEG\controler\FormulaireBesoinControler;
+use GEG\controler\testControler;
 use GEG\controler\AjouterBesoinControler;
 
 
@@ -67,6 +68,13 @@ $app->post("/newCreneau", function() {
 $app->get("/ajouterBesoin/:idCreneau", function($idCreneau) {
     $controller = new AjouterBesoinControler();
     $controller->renderForm($idCreneau);
+});
+
+$app->get ("/test", function() {
+
+  $controller = new testControler();
+  $controller->afficher();
+
 });
 
 $app->run();

@@ -40,10 +40,15 @@ INSERT INTO user (id, nom) VALUES
     jour varchar(10),
     mois varchar(10),
     annee int,
-    debutHeure time,
-    finHeure time,
+    debutHeure int,
+    finHeure int,
     primary key(id)
 );
+
+insert into creneau (id, jour, mois, annee, debutHeure, finHeure) VALUES
+  (1, 13, 2, 2020, 14, 17),
+  (2, 14, 2, 2020, 8, 10),
+  (3, 18, 2, 2020, 10, 12);
 
 CREATE TABLE besoin(
 	idCreneau int,
