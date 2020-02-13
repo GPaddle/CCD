@@ -12,6 +12,7 @@ use GEG\controler\AjouterBesoinControler;
 use GEG\controler\CreneauControleur;
 use GEG\controler\ListBesoinControleur;
 use GEG\controler\HomeControler;
+use GEG\controler\InscriptionBesoinControleur;
 
 $db = new DB();
 $db->addConnection(parse_ini_file("src/conf/conf.ini"));
@@ -96,12 +97,12 @@ $app->post("/seCo",function (){
 $app->get("/inscriptionBesoin", function() {
   $controler = new InscriptionBesoinControleur();
   $controler->renderForm($idCreneau);
-})
+});
 
 $app->post("/inscriptionBesoin", function() {
   $controler = new InscriptionBesoinControleur();
   $controler->renderForm($idCreneau);
-})
+});
 
 $app->post("/supUser",function (){
     $c=new connectionControler();
